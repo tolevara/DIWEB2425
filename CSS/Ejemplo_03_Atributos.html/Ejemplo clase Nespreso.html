@@ -1,0 +1,66 @@
+<!--Ejemplo 03 Nespresso-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nespresso</title>
+    <style>
+        form[method="get"] {
+            background-color: aqua;
+        }
+
+        form[method="post"] {
+            background-color: plum;
+        }
+
+        input[name="azul"]+br+input[value] {
+            border: 1px solid blue;
+        }
+        
+        input[name="rojo"]+br+input[value] {
+            border: 1px solid red;
+        }
+        input#azul + br + input[value]{
+            color: red;
+        }
+
+
+        /*CAMBIAR COLOR FUENTE DEL SUBMIT AZUL ¬input[name="azul"]+input[value="ok"{color:rojo¬*/
+    </style>
+</head>
+
+<body>
+    <form action="#" method="get">
+        <fieldset>
+
+            <legend>Añadir a cesta</legend>
+
+            <label for="azul">Café AZUL</label><br>
+            <input type="number" name="azul" id="azul">
+            <br>
+            <input type="submit" value="OK">
+
+        </fieldset>
+    </form>
+
+    <form action="#" method="post">
+        <fieldset>
+
+            <legend>Añadir a cesta</legend>
+
+            <label for="rojo">Café ROJO</label><br>
+            <input type="number" name="rojo" id="rojo">
+            <br>
+            <input type="submit" value="OK">
+
+        </fieldset>
+    </form>
+
+
+
+
+</body>
+
+</html>

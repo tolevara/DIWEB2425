@@ -1,0 +1,56 @@
+<!--Ejemplo 08 Flotante-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizacion</title>
+    <style>
+        main {
+            width: 800px;
+            height: 600px;
+            background-color: pink;
+        }
+
+        p {
+            width: 260px;
+            height: 100px;
+            background-color: aqua;
+            float: left;
+            margin-left: 4px;
+            border: 1px solid blue;
+        }
+
+        p:nth-last-of-type(2) {
+            box-shadow: 2px 2px 2px;
+            /*ancho-alto-profundo*/
+            visibility: hidden;
+            /*ocultar el elemento*/
+            display: none
+                /*desaparece el elemto*/
+
+        }
+        
+        p:last-of-type{
+overflow:isible;   /*por defecto */
+overflow:hiden     /*todo lo que salga de la caja está oculto*/
+overflow:scroll    /*barra lateral para mover texto*/
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+        <p>La propiedad CSS overflow especifica: si recortar contenido, dibujar barras de desplazamiento o mostrar el
+           contenido excedente en un elemento a nivel de bloque.</p>
+    </main>
+
+</body>
+
+</html>

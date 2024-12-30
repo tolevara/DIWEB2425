@@ -1,0 +1,275 @@
+/*01. */
+@font-face {
+    font-family:Inter;
+    src: url(font/Inter.ttf);
+}
+
+/*02. */
+body {
+    font-family:Inter;
+    font-size: 0.7em;
+    background-color:rgb(241, 241, 241)
+}
+
+/03. */                                   /*OTRA FORMA DE HACERLO/
+header {                                   /body>header: nth-child(1)/
+height: 80px;                              
+width: 100%;
+background-color: white;
+border-radius: 20px;
+}
+
+/*04. */                                                                 
+aside {                                    /*body>aside: nth-child(3),
+    border: 5px solid white;                 aside: nth-child(5) {
+    border-radius: 20px                      border-color: white;
+    border-top: dashed;                      border-width: 5px;
+}                                            border-radius: 20px; border-top: dashed; */
+/* Reglas Header (Cabecera)*/
+/* ############################################# */
+
+/*05. */                            
+header figure, header nav {        /* header>figure img,*/
+     float: left;                  /* header: nth-child(1)>nav:nth-child(3)*/
+     position: absolute 20px;      /* float: left; position: absolute; paddin-top:20px;*/
+
+}
+
+/*05 (opcional). */
+header figure img {
+    border-radius: 10%;
+    filter:blur(0.2px);
+    width: 150px;
+    height: 50px;
+    
+}
+
+/*06. */
+body header nav form {             /* header: nth-child(1)>nav:nth-child(2)
+    margin-top: 15px;
+    width: 45%;
+    text-align: right;
+    margin-left: 200px;
+}
+
+/*07. */
+body header nav form input {           /* body>header>nav>form>input#buscar,input[type="submit"]{ 
+    border: 1px color #df5521;            border-color:   ;                                                      
+    padding-top: 5px;                     boder-width: 1px;
+    padding-bottom:5px;                   padding-top; 5px;
+    padding-right: 15px;                  padding-bottom: 5px;
+    padding-left: 15px;                   padding-left: 15px;
+    box-shadow: 5px 5px 10px #df5521;     padding-right: 15px; box-shadow:  ; border-radius:  ; */
+    border-radius: 10px;
+}
+
+/08. */                                / body>header>nav>form>img {                                                                                   
+body header nav form img {                 vertical-aling: middle; */
+vertical-align: middle;
+}
+
+/09. */                           / body>header>nav {
+body header nav {                     position: absolute;
+position: absolute;                   left: 40px; 
+right: 40px;                          top: 40px;  
+top: 40px;
+}
+
+/*10. */
+body header nav a {
+text-decoration: none;
+color: 100,100,100;
+opacity: 90%;
+margin-right: 10px;
+margin-left: 10px;
+font-size: 15px;
+}
+/* Reglas Section Mensaje (Banner)*/
+/* ############################################# */
+
+/11. */                                                    / body>section#primeranuncio.anuncio{
+                                                               padding: 5px; width: 280px; height: 80px; background: #f9b49b;
+                                                               border: 1px solid #df5521; border-radius: 1em; display: block;
+                                                               position: abolute; top: 100px; left: 550px; z-index: 30;*/
+
+
+/12./                                                      /* .boton{
+                                                                 position: relativ; bottom: 30px
+                                                                 right: 10px; float: right; display: inline; */
+
+
+
+
+
+
+
+                                                       
+/* Reglas Aside (Laterales)*/                          
+/* ############################################# */
+
+/*13. */
+body aside {
+    position: absolute;
+    width: 18%;
+    margin-left: 30px;
+    padding: 10px;
+    z-index: 10;
+}
+
+/*14. */
+body > aside + section h2{                   /* body>saide: nth-child(3)>section>h2 {
+    color: #df5521;                             color: #df5521; */
+}
+/* Reglas Aside Izquierdo (Lateral Izquierdo)*/
+/* ############################################# */
+
+/*15. */
+body > header + section + aside{            /*body>aside: nth-child(3) { */
+    top: 100px;                             /* top: 100px; margin-left: 10px; */
+    margin-left: 10px;
+}
+
+/*16. */
+body > header + section + aside{            /*body>aside: nth-child(3) { */
+    display: block;                         
+}
+
+/*17. */                                    /*body>aside>section>form [type="text"] */
+body > header + form + aside{
+    border: solid 1px color(#df5521);
+    padding: 2px;
+    box-shadow: 10px, 10px;
+    filter: blur(10px);
+    color: #df5521;
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*18. */
+body > header + aside form:hover{          /*body>aside>section>form [type="trxt"] */  
+ background-color: azure;              
+}                                       
+                                                                                                                  
+/*19. */
+body > header + form + aside input[type="submit"] {         /*aside: nth-child(3)>form>input[type="submit"] {   */ 
+    border-width: ; width: 1px;                             
+    border-color: #df5521;                                
+    border-radius:  5px; 
+    display: block;                                         
+    margin-top: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:  10px;
+    padding-right: 10px;   
+}
+
+/*20. */
+body > header + form + aside {        /*body>aside: nth-child(3)>section: nth-child(2)>h2: nth-child(1) { */
+    text-decoration: underline;       /*ADVERTENCIA: PUEDE QUE ME FALTE EL section */
+    text-transform: capitalize;
+    color: #df5521;
+}
+
+/*21. */
+body > header + section + aside a {       /*body>aside: nth-child(3)>section: nth-child(2) a { */
+    color: gray;
+    opacity: 0.8;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/*22. */
+
+
+
+/* Reglas Main */
+/* ############################################# */
+
+
+/*23. */
+body > main:nth-child(4) {
+    position: absolute;
+    top:  100px;
+    left: 26%;
+    padding: 10px;
+    width: 45%;
+}
+
+/*24. */
+body > main:nth-child(4) > h1 {
+    color: #df5521;
+}
+   
+/*25 */
+body>main:nth-child(4)>article>section>figure:nth-child(2)>img {
+    float: right;
+    margin-top: 10px;
+    margin-right: -15px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    widht: 30%;
+}
+
+/*26. */
+body > main:nth-child(4) > article > header > h2 > a {
+    er: 1px solid #df5521;
+    er-radius: 5px;
+    ing: 5px;
+    in-right: 15px;
+}
+
+
+/*27. */
+
+/*28. */
+
+/*29. */
+
+/* Reglas Aside Derecho*/
+/* ############################################# */
+/*30. */
+
+/*31. */
+
+/*32. */
+
+/*33. */
+
+/*34. */
+
+/*35. */
+
+/* Reglas Footer*/
+/* ############################################# */
+/*36. */
+footer{
+    position: relative;
+    top: 750px;
+    width: 100%;
+    padding: 20px;
+}
+
+/*37. */
+footer > table > tr{
+    margin-left: 40%;
+    border-spacing: 40px;
+
+}
+
+/*38. */
+footer > table > tr a{
+display: inline;
+display: block;
+color: #df5521;
+text-decoration: underline;
+
+}
+
+/*39. */
+
+
+/*40. */
+footer a::first-letter {
+    font-size: 20px;
+    font-weight: 20px;
