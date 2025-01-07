@@ -1,0 +1,64 @@
+<!--tarea01_adrian_corteingles.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Aquí he puesto el logo principal que es el del Corte Inglés-->
+    <img src="img/imglogo.jpeg" alt="El Corte Inglés" width="150"><br>
+    <!--El formulario con get, porque no hace falta que esté incriptado-->
+    <form action="corteingles.php" method="get">
+        <label for="modelo">¿Qué estás buscando?</label><br>
+        <input type="text" name="modelo" id="modelo">
+        <input type="submit" value="buscar" style="background-color:limegreen;">
+        <!--Los primeros logos de la página , en el logo usuario he puesto el enlace para registrarte-->
+        <a href="https://cuenta.elcorteingles.es/"><img src="img/imagesusuario.jpeg" alt="Usuario" width="45"></a>
+        <img src="img/png-transparent-white-heart-shape-illustration-heart-outline-wedding-hearts-love-angle-white-thumbnail.png"
+            alt="Lista de deseos" width="35">
+        <img src="img/png-transparent-computer-icons-basket-shopping-basket-rectangle-logo-desktop-wallpaper.png/"
+            alt="Carrito" width="35">
+
+    </form><br>
+    <!--Enlaces para que te lleven a cada sección que desees abrir-->
+    <a style="color: black;" href="https://www.elcorteingles.es/moda-mujer/"></style>MODA MUJER</a>;&nbsp;
+    <a style="color: black;" href="https://www.elcorteingles.es/deportes/">DEPORTES</a>&nbsp;
+    <a style="color: black;" href="https://www.elcorteingles.es/electronica/">ELECTRÓNICA</a>&nbsp;
+    <a style="color: black;" href="https://www.elcorteingles.es/hogar/">HOGAR</a>&nbsp;
+    <a style="color: black;"
+        href="https://www.elcorteingles.es/supermercado/?utm_source=eci&utm_medium=home&utm_campaign=botones">SUPERMERCADO</a>&nbsp;&nbsp;
+
+    <!-- La primera tabla con imagenes-->
+    <h2>Categorias</h2><br>
+    <table>
+        <tr>
+            <td><img src="img/modamujer.avif" alt="Moda Mujer" width="250"></td>
+            <td><img src="img/modahombre.avif" alt="Moda Hombre" width="250"></td>
+            <td><img src="img/modainfantil.avif" alt="Moda Infantil" width="250"></td>
+            <td><img src="img/hogar.avif" alt="Hogar" width="250"></td>
+            <td><img src="img/deportes.avif" alt="Deportes" width="250"></td>
+            <td><img src="img/electronica.avif" alt="Electrónia" width="250"></td>
+        </tr>
+        <tr>
+            <td>Moda Mujer</td>
+            <td>Moda Hombre</td>
+            <td>Moda Infantil</td>
+            <td>Hogar</td>
+            <td>Deportes</td>
+            <td>Electrónica</td>
+        </tr>
+    </table> <br>
+    <!-- Enlaces con logos que te llevan a otra página-->
+    <a style="color: green;" href="https://www.elcorteingles.es/click-collect/"><img src="img/recogida2.jpeg"
+            alt="Recogida en tienda" width="45">Recogida en tienda</a>
+    <a style="color:green;" href="https://www.elcorteingles.es/ayuda/es/envio-y-recogida/envio/gastos-de-envio/"> <img
+            src="img/adomicilio.png" alt="Envio a domicilio" width="45">Envio a domicilio</a>
+    <a style="color: green;"
+        href="https://www.elcorteingles.es/ayuda/es/devolucion-y-reembolso/devolucion-y-cambio/"><img
+            src="img/devoluciones.png" alt="Devolución GRATIS en tienda" width="45">Devolución GRATIS en tienda </a>
+    <a style="color: green;" href="https://www.elcorteingles.es/click-car/"> <img src="img/click.png" alt="Click & Car"
+            width="50"> Click & Car</a> <br>
