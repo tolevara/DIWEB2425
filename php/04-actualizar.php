@@ -56,7 +56,7 @@ if (isset($_REQUEST['enviar'])) {
         $tock,
         $categoriasValores,
         $referencia,  
-    );
+    )
 
     // EjecutaSQL es boleano: true(correcto), false(error) //
     $ejecutaSQL = $sentenciaPreparada->execute();
