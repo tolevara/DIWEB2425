@@ -20,8 +20,25 @@
                 this.velocidad = 0;
             }  
             
-            
+            acelerar(velocidad) {  //MÉTODOS//
+                this.velocidad = this.velocidad + velocidad;
+                if(velocidad > 10 && velocidad < 30 ) {
+                    this.bateria = this.bateria * 0.99; //ESTO ES PORCENTAJE AL -1%//
+                }
+                if(velocidad >= 30 && velocidad < 50 ) {
+                    this.bateria = this.bateria * 0.98; //ESTO ES PORCENTAJE AL -2%//
+                }
+            }
 
+            frenar(velocidad) {
+                this.velocidad = this.velocidad - velocidad;
+                if(velocidad >= 10 && velocidad < 30 ) {
+                    this.bateria = this.bateria * 1.005; //ESTO ES PORCENTAJE AL +0.5%//
+                }
+                if(velocidad >= 30 && velocidad < 50 ) {
+                    this.bateria = this.bateria * 1.01; //ESTO ES PORCENTAJE AL +1%//
+                }
+            }
         }
 
 
@@ -44,7 +61,27 @@
         }
 
         function crearcoche() {
+            let miKona = new Coche("Hyundai Kona");
+            alert (JSON.stringify(miKona, null, 2));
+            miKona.acelerar(35);
+            alert (JSON.stringify(miKona, null, 2));
+            miKona.frenar(20);
+            alert (JSON.stringify(miKona, null, 2));
+        }
 
+        function ec2grado(a, b, c) { //EJEMPLO: X² -5X +6 = 0 -> X1=2 Y X2=3// //RAIZ CUADRADA: Math.sqrt()//
+            let x1 = 0;
+            let x2 = 0;
+
+            let discriminante = (b*b) - (4*a*c); //EL DISCRIMINANTE TIENE QUE SER POSITIVO POR SER UNA RAÍZ CUADRADA//  
+            if(discriminante<0) {
+                alert("No hay solución");
+            }  else {
+                x1 = (-b + Math.sqrt(discriminante)) / (2*a);
+                x2 = (-b - Math.sqrt(discriminante)) / (2*a);
+                alert(x1);
+                alert(x2);
+            }              
         }
 
         function menu() {
@@ -63,6 +100,9 @@
                     case 1: alert(nomina()); break;
                     case 2: crearcoche(); break;
                     case 3: ec2grado(a, b, c); break;
+                    let a = parseInt(prompt("Dame A:"));
+                    let b = parseInt(prompt("Dame B:"));
+                    let c = parseInt(prompt("Dame C:"));
                     case 4: tablasMultiplicar(x, y); break;
                     default: alert("Fin ")
                         break;
