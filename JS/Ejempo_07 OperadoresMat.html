@@ -1,0 +1,59 @@
+<!--Ejemplo_07_OperadoresMat.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // let = DECLARACION DE VARIABLE //
+        // Esto se llama modularizar es para el codigo en fusiones(fragmento)
+
+
+        function suma() {
+
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 + num2; (prompt("Dame Nº1"));
+            alert(`La suma es: ${resultado}`);
+        }
+
+        //Módulo: ES EL RESTO DE LA DIVISION ENTERA
+        // EJEMPLO: 11 % 2 = 1 (COCIENTE ES 5 Y EL RESTO ES 1)
+
+        function division() {
+
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 / num2; (prompt("Dame Nº1"));
+            alert(`La suma es: ${resultado}`);
+        }
+
+        function modulo() {
+
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 % num2; (prompt("Dame Nº1"));
+            alert(`El modulo es: ${resultado}`);E
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3"> <!-- SEPARA EL BOTON DEL MARGEN IZQUIERDO -->
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-primary" onclick="suma();">Suma</button>
+            <button type="submit" class="btn btn-primary" onclick="division();">Division</button>
+            <button type="submit" class="btn btn-primary" onclick="modulo();">Módulo</button>
+
+
+            <!--onclick ATRIBUTO ES UN EVENTO-->
+        </form>
+    </main>
+</body>
+
+</html>

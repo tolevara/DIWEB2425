@@ -1,0 +1,129 @@
+<!-- Ejemplo_19_POO_Encapsulamiento.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+
+        //PARA ACCEDER USAMOS setter(MODIFICADORES) / getter(OBTENEDORES) Y SON PÚBLICOS//
+        //PARA CONSTRUIR LOS ENCAPSULADO:1ºEL ATRIBUTO, 2ºCONSTRUCTOR, 3ºLOS MÉTODOS CON SU PROPIO JSON PERSONALIZADO
+
+        class Persona {          //CLASE PADRE:Persona//
+            #nombre = "";       // ATRIBUTOS PRIVADO USAMOS # //
+            #edad = 0;
+            ciudad = "";
+
+            constructor(nombre, edad, ciudad) {  //CONSTRUCTOR = CONSTRUYE EL OBJETO//
+                this.nombre = nombre;
+                this.edad = edad;
+                this.ciudad = ciudad;
+            }
+
+            #mostrarInfo() {          //MÉTODO PRIVADO //
+                return {
+                    Nombre: this.nombre,    //CONSTRUYE TU PROPIO JSON//
+                    Edad: this.edad,       //QUITAMOS # PARA EL USAR EL getter DE MÁS ABAJO//
+                    Ciudad: this.ciudad,
+                    Tipo: this.constructor.name  //ADEMÁS DEFINO QUE TIPO DE nombre ES//
+                }
+            }
+
+            set nombre(nombre) {
+                this.#nombre = nombre;
+            }
+
+            get nombre() {
+                return this.#nombre;
+            }
+
+            set edad(edad) {
+                if (edad > 0) {
+                    this.#edad = edad;
+                }
+            }
+            get edad() {    //getter es PÚBLICO//
+                return this.#edad;
+            }
+
+            set ciudad(ciudad) {
+                this.ciudad = ciudad;
+            }
+
+            get ciudad() {
+                return this.ciudad
+            }
+
+            imprimir() {
+                return JSON.stringify(this.#mostrarInfo());
+            }
+        }
+
+        class Alumno extends Persona {  //CLASE HIJA ATRIBUTOS PROPIOS PRIVADO//
+            curso = "";     //str//
+            #nota = 0.0;    //float//
+
+            constructor(nombre, edad, ciudad, curso, nota) {
+                super(nombre, edad, ciudad);
+                this.curso = curso;
+                this.#nota = nota;
+            }
+
+            imprimir() {            //PARSE RECOJE LO QUE VIENE DEL PADRE  Y ES PÚBLICO  //
+                let datos = JSON.parse(super.imprimir());
+                datos.curso = this.curso;
+                datos.nota = this.#nota;
+                return JSON.stringify(datos, null, 2);
+            }
+
+            /* #mostrar () {           //PARA HACERLO PRIVADO//
+              return {
+              ...super._mostrarInfo(), //LLEVA _ PARA HACERLO PRIVADO
+              curso: this.curso,
+              nota: #this.nota,
+              } */
+
+        }
+
+        class Profesor extends Persona {  //CLASE HIJA ATRIBUTOS PROPIOS PRIVADO//
+            #materia = "";     //str//
+            #salario = 0.0;    //float//
+
+            constructor(nombre, edad, ciudad, materia, salario) {
+                super(nombre, edad, ciudad);
+                this.#materia = materia;
+                this.#salario = salario;
+            }
+
+            imprimir() {                 //PARSE RECOJE LO QUE VIENE DEL PADRE //
+                let datos = JSON.parse(super.imprimir());
+                datos.materia = this.#materia;
+                datos.salario = this.#salario;
+                return JSON.stringify(datos, null, 2);
+            }
+        }
+
+        function iniciar() {
+            let Manolo = new Profesor("Manolo J", 45, "Sevilla", "Matemáticas", 1.500); //CREAR objeto PROFESOR e IMPRIMIR
+            alert(`Profesor Manolo:\n ${Manolo.imprimir()}`);
+
+            let Maria  = new Alumno("Maria T", 22, "Sevilla", "Primero", 8);      //CREAR objeto ALUMNO e IMPRIMIR//
+            alert(`Alumno Maria:\n ${Maria.imprimir()}`); //TITULO DE LA PÁGINA//
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>

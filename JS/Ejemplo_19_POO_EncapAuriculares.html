@@ -1,0 +1,80 @@
+<!-- Ejemplo_19_POO_Encapsulamiento.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+
+        //PARA ACCEDER USAMOS setter(MODIFICADORES) / getter(OBTENEDORES) Y SON PÚBLICOS//
+        //PARA CONSTRUIR LOS ENCAPSULADO:1ºEL ATRIBUTO, 2ºCONSTRUCTOR, 3ºLOS MÉTODOS CON SU PROPIO JSON PERSONALIZADO
+
+        class AuricularesBT {     //CLASE PADRE: AuricularesBT//
+            stock = 44;
+            #importe = 0.0;      // ATRIBUTOS PRIVADO USAMOS # //
+
+
+            constructor(stock, importe,) {  //CONSTRUCTOR = CONSTRUYE EL OBJETO//
+                this.stock = stock;
+                this.importe = importe;
+            }
+
+            #mostrarInfo() {          //MÉTODO PRIVADO //
+                return {
+                    Stock: this.stock,    //CONSTRUYE TU PROPIO JSON//
+                    Importe: this.importe,       //QUITAMOS # PARA EL USAR EL getter DE MÁS ABAJO/     
+                    Tipo: this.constructor.name  //ADEMÁS DEFINO QUE TIPO DE nombre ES//
+                }
+            }
+
+            set stock(cantidad) {
+                if (stock > 0) {
+                    this.stock = cantidad;
+                }
+            }
+
+            get stock() {
+                return this.stock;
+            }
+
+
+            set importe(cantidad) {
+                if (importe > 0) {
+                    this.#importe = cantidad;
+                }
+            }Alumno
+            get importe() {
+                    return this.#importe
+                }
+
+                imprimir() {
+                    return JSON.stringify(this.#mostrarInfo());
+                }
+            }
+
+       
+
+        function iniciar() {
+            let Stock = new AuricularesBT("AuricularesBT", 1);    //CREAR objeto PROFESOR e IMPRIMIR
+            alert(`AuricularesBT:\n ${AuricularesBT.imprimir()}`);
+
+            let Importe = new AuricularesBT("AuricularesBT", 8);      //CREAR objeto ALUMNO e IMPRIMIR//
+            alert(`AuricularesBT:\n ${Maria.imprimir()}`);    //TITULO DE LA PÁGINA//
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>

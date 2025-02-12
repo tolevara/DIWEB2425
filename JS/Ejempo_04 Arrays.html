@@ -1,0 +1,36 @@
+<!--Ejemplo_04_Arrays.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // let = DECLARACION DE VARIABLE //
+        function iniciar() {
+
+            //DEFINIMOS UN array DE DÍAS DE LA SEMANA//
+            let dias =["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+            window.alert(`Hoy es ${dias[3]}`); // COMILLAS INVERTIDAS ` ` //
+            dias[3] = "Ofú, es Jueves";
+            window.alert(`Hoy es ${dias[3]}`);
+
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3"> <!-- SEPARA EL BOTON DEL MARGEN IZQUIERDO -->
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">Hoy</button>
+            <!--onclick ATRIBUTO ES UN EVENTO-->
+        </form>
+    </main>
+</body>
+
+</html>

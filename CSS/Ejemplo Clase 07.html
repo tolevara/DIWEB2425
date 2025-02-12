@@ -1,0 +1,125 @@
+<!---->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamiento</title>
+    <style>
+        /*Formateado de la página*/
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1em;
+            padding: 0px;
+            margin: 1em;
+            font-size: 25px;
+        }
+
+        main {
+            background-color: pink;
+            padding: 10px;
+            width: 40%;
+            position: relative;
+            top: 100px;
+        }
+
+        section:first-of-type {
+            background-color: lightblue;
+            position: static;
+        }
+
+        section:nth-of-type(2) {
+            background-color: darkseagreen;
+            position: relative;
+
+        }
+
+        section:last-of-type(3) {
+            background-color: lightsalmon;
+            position: absolute;
+
+        }
+
+        section:last-of-type {
+            background-color: burlywood;
+            position: sticky; /*Al (sticky)también se le llama ¡¡¡PEGAJOSO!!!*/
+            bottom: 20px;
+
+        }
+
+        h1,nav{
+            position: fixed;
+            z-index: 2;
+            background-color: white;
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1>Posicionamiento</h1>
+    <nav>Barra de Navegación</nav>
+    <main>
+
+        <section>
+            <h2>static</h2>
+            <article>
+                La propiedad position de CSS especifica cómo un elemento es posicionado en el documento. Las propiedades
+                top, right, bottom, y left determinan la ubicación final de los elementos posicionados.
+            </article>
+
+        </section>
+
+        <section>
+            <h2>relative</h2>
+            <article>
+                Un elemento posicionado relativamente es un elemento cuyo valor computado de position es relative. Las
+                propiedades top y bottom especifican el desplazamiento vertical desde su posición original; las
+                propiedades
+                left y right especifican su desplazamiento horizontal.
+            </article>
+
+        </section>
+
+        <section>
+            <h2>absolute</h2>
+            <article>
+                Un elemento posicionado absolutamente es un elemento cuyo valor computado de position es absolute o
+                fixed.
+                Las propiedades top, right, bottom, y left especifican el desplazamiento desde los bordes del bloque
+                contenedor del elemento. (El bloque contenedor es el ancestro relativo al cual el elemento está
+                posicionado). Si el elemento tiene márgenes, se agregarán al desplazamiento. el elemento establece un
+                nuevo
+                contexto de formato de bloque para su contenido
+            </article>
+
+        </section>
+
+        <section>
+            <h2>sticky</h2>
+            <article>
+                El elemento es posicionado de acuerdo al flujo normal del documento, y luego es desplazado con relación
+                a su
+                ancestro que se desplace más cercano y su bloque contenedor (ancestro en nivel de bloque más cercano)
+                incluyendo elementos relacionados a tablas, basados en los valores de top, right, bottom, y left. El
+                desplazamiento no afecta la posición de ningún otro elmento.
+
+                Estos valores siempre crean un nuevo contexto de apilamiento. Nótese que un elemento sticky se "adhiere"
+                a
+                su ancestro más cercano que tiene un "mecanismo de desplazamiento" (creado cuando el overflow es hidden,
+                scroll, auto, o bien overlay), aún si ese ancestro no es el ancestro con desplazamiento más cercano.
+                Esto
+                inhibe efectivamente el comportamiento "sticky" (ver el Github issue en W3C CSSWG).
+
+            </article>
+
+        </section>
+    </main>
+
+</body>
+
+</html>

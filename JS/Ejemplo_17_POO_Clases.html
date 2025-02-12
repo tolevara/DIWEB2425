@@ -1,0 +1,55 @@
+<!-- Ejemplo_17_POO_Clases.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+        /*LAS CLASES SON LOS MODELOS PARA CREAR OBJETOS, 
+        DEFINEN ATRIBUTOS Y MÉTODOS, EL NOMBRE COMIENZA EN MAYÚSCULA, 
+        EJEMPLO:Camión*/
+                        //******** FORMATO JSON ********//
+
+        class Camion {  //DEFINO LOS ATRIBUTOS//      
+            modelo = "";          //string,(cadena de carácteres)//
+            potencia = 0;        //int//
+            electrico = true;   //booleano//
+            precio = 138600.55; //float//
+
+            constructor(modelo, nuevaPotencia) { //MÉTODOS "ESPECIAL", EL MÁS IMPORTANTE ES EL "constructor"//
+               this.modelo = modelo;            // this->VALOR DE UN OBJETO ESPECÍFICO //
+               this.potencia = nuevaPotencia;
+            }
+
+            hacerDescuento (porcentaje) {  //MÉTODO "NORMAL" //
+                let miDescuento = this.precio * porcentaje / 100;  
+                // this.precio = this.precio - miDescuento;     //MODELO TIPO//
+                this.precio -= miDescuento;                     //MODELO ABREVIADO//
+            }
+        }
+
+        function iniciar() {            //CREO 2 CAMIONES, PARA EL constructor,USAMOS new //
+            let camion1 = new Camion("Volvo FH Aero", 360);
+            let camion2 = new Camion("Volvo FH Electic", 540);
+
+            camion2.hacerDescuento(5)  //PINTAMOS LOS CAMIONES//
+            alert(`Camión1: \n ${JSON.stringify(camion1, null, 2)}`);
+            alert(`Camión2: \n ${JSON.stringify(camion2, null, 2)}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>

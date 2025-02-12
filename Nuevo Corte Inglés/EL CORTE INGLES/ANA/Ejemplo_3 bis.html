@@ -1,0 +1,482 @@
+<!--Tarea_03.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Corte Inglés</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
+        /* LOGO EL CORTE INGLES*/
+        header {
+            align-items: center;
+            padding: 6px 0px;
+            position: sticky;
+            top: 0px;
+            z-index: 2;
+            background-color: white;
+            height: 260px;
+            box-sizing: border-box;
+        }
+
+        /* BUSCADOR  BUSCAR */
+        body>header>nav>form {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            padding: 0.5rem 2rem;
+            width: 500px;
+            background-color: white;
+            position: relative;
+            left: 500px;   /* A MAYOR NÚMERO SE VA PARA LOS ICONOS / A MENOR PARA EL LOGO*/
+            bottom: 60px;  /* A MAYOR NÚMERO SUBE / A MENOR BAJA*/
+        }
+
+        /* BOTTON BUSCAR*/
+        #buscar {
+            border: none;
+            outline: none;
+            padding: 1px;
+            font-size: 14px;
+            flex: 1;
+            position: relative;
+            right: 24px;
+        }
+
+
+        body>header:nth-child(1)>nav:nth-child(2)>form:nth-child(1)>button:nth-child(3) {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 1px;
+            position: relative;
+            left: 29px;
+
+        }
+
+        /*LOS TRES ICONOS*/
+        aside.icon-container {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        article ul {
+            /*LISTA CABECERA*/
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 0px;
+            margin: 20px 0px;
+            list-style: none;
+        }
+
+        article ul li {
+            list-style-type: none;
+            display: inline;
+            margin-right: 5px;
+        }
+
+        article ul li a {
+            margin: 0px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+        }
+
+        article ul li a span {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: black;
+
+        }
+
+        body>main:nth-child(2)>h2:nth-child(2) {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: Trebuchet;
+            font-size: 18px;
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+
+        /*BANNER*/ 
+        .gallery-item {
+            /* Contenedor de cada imagen */
+            min-width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* imagen niños*/
+        .gallery-item img {
+            max-width: 100%;
+            /* Asegura que la imagen ocupe todo el ancho */
+            height: auto;
+            /* Mantiene la proporción de la imagen */
+            display: block;
+        }
+
+        /*Frases imagen niños*/
+        p.image-caption:nth-child(2) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            text-transform: capitalize;
+            border-radius: 10px;
+        }
+
+        p.image-caption:nth-child(3) {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-size: 18px;
+            font-weight: normal;
+            text-align: center;
+            border-radius: 8px;
+            text-transform: capitalize;
+        }
+
+        p.image-caption:nth-child(3)>a:nth-child(1) {
+            border: 2px solid lightgray;
+            background-color: white;
+            line-height: 40px;
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /*La palabra categorías*/
+        body>h2:nth-child(3) {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 18px;
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+
+        /*SEPARA LINEAS DEL MEDIO EN LA TABLA */
+        table {
+            width: 100%;
+            font-family: sans-serif;
+            table-layout: auto;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        td {
+            text-align: center;
+            text-transform: capitalize;
+            padding: 6px;
+        }
+
+        ul {
+            /* Eliminar viñetas */
+            list-style: none;
+            /* Alinear elementos en fila */
+            display: flex;
+            justify-content: space-between;
+            margin: 60px;
+            padding-top: 80px;
+            /*Espacio entre la tabla y los elementos*/
+            padding-bottom: 40px;
+        }
+
+        ul li img {
+            margin-bottom: 5px;
+
+        }
+
+        section ul li {
+            /* Alinear imagen y texto en línea */
+            display: flex;
+            /* Centrar el texto con la imagen */
+            align-items: center;
+            /* Centrar verticalmente */
+            justify-content: left;
+            /* Borde del contenedor */
+            border: 1px solid lightsteelblue;
+            /* Esquinas redondeadas */
+            border-radius: 5px;
+            /* Espaciado interno */
+            padding: 1rem;
+            /* Ajustar el ancho de cada bloque */
+            width: 20%;
+        }
+
+        /*TEXTO DENTRO DE LOS BOTONES QUE ESTAN EN EL PIE*/
+        section ul li a {
+            /* Sin subrayado */
+            text-decoration: none;
+            /* Color del texto */
+            color: black;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+
+        }
+
+        section ul li span {
+            color: green;
+
+        }
+
+        section ul li img {
+            height: 30px;
+            width: 30px;
+            overflow: hidden;
+        }
+
+        /* EJECUTA EL FORMULARIO */
+
+        footer {
+            background-color: #ccc;
+            padding: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* FORMULARIO DE ABAJO*/
+
+        body>footer:nth-child(6)>section:nth-child(1)>form:nth-child(1) {
+            position: relative;
+            left: 22%;
+            top: 20px;
+            width: 50%;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* FORMULARIO DE ABAJO-MARGEN AL REDEDOR*/
+
+        fieldset {
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-size: 1.2rem;
+            /*NEGRITA*/
+            font-weight: bold;
+            color: green;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-top: 10px;
+            display: block;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 96%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        small {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        /* EDITA BOTONES*/
+
+        button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button.btn-success {
+            background-color: green;
+            color: white;
+        }
+
+        button.btn-success:hover {
+            background-color: black;
+        }
+
+        button.btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        button.btn-secondary:hover {
+            background-color: black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <aside class="logo-el corte ingles">
+            <figure>
+                <a href="https://www.elcorteingles.es/"><img src="Img/Logo.png" width="200" alt="logo"></a>
+            </figure>
+        </aside>
+        <nav>
+            <form action="#" method="get" role="search">
+                <label for="buscar" class=""></label>
+                <input type="text" naime="buscar" id="buscar" placeholder="¿Qué estás buscando?" aria-label="buscar">
+                <button type="submit">
+                    <img src="Img/lupa_buscador.png" width="35" alt="bot">
+                </button>
+            </form>
+        </nav>
+
+        <!--TRES ICONOS-->
+        <aside class="icon-container">
+            <a href="https://acortar.link/oJ6P1u"><img src="Img/usuarioo.png" width="20" alt="Usuario"></a>
+            <a href="https://acortar.link/oJ6P1u"><img src="Img/Corazon2.png" width="27" alt="Favoritos"></a>
+            <a href="https://acortar.link/oJ6P1u"><img src="Img/bolsa-de-la-compra.png" width="28" alt="Carrito"></a>
+        </aside>
+
+        <article aria-label="lista">
+            <!--Lista después de la cabecera-->
+            <ul>
+                <li><a href="https://www.elcorteingles.es/moda-mujer/?stype=search_redirect"><span>MODA MUJER</span></a>
+                </li>
+                <li><a href="https://www.elcorteingles.es/deportes/"><span>DEPORTE</span></a></li>
+                <li><a href="https://www.elcorteingles.es/electronica/"><span>ELECTRÓNICA</span></a></li>
+                <li><a href="https://www.elcorteingles.es/hogar/"><span>HOGAR</span></a></li>
+                <li><a href="https://acortar.link/gGpa77"><span>SUPERMERCADO</span></a></li>
+            </ul>
+        </article>
+    </header>
+    <!--BANER-->
+    <main>
+        <section aria-label="gallery">
+            <figure class="gallery-item">
+                <img src="Img/niños.jpeg" alt="Imagen 2">
+                <p class="image-caption tertiary-text">una aventura de navidad en la planta 2 1/2</p>
+                <p class="image-caption quaternary-text"><a href=""></a></p>
+            </figure>
+        </section>
+    </main>
+
+    <h2>Categoria</h2>
+    <table>
+        <thead>
+            <tr>
+                <td><a href="https://www.elcorteingles.es/moda-mujer/"><img src="Img/mujer.jpeg" alt="mujer"
+                            width="180"></a></td>
+                <td><a href="https://www.elcorteingles.es/moda-hombre/"><img src="Img/Hombre.png" alt="hombre"
+                            width="180"></a></td>
+                <td><a href="https://www.elcorteingles.es/moda-infantil/"><img src="Img/Niña.png" alt="niña"
+                            width="180"></a></td>
+                <td><a href="https://www.elcorteingles.es/hogar/"><img src="Img/Hogar.png" alt="hogar" width="180"></a>
+                </td>
+                <td><a href="https://www.elcorteingles.es/deportes/"><img src="Img/Deporte.png" alt="deporte"
+                            width="180"></a></td>
+                <td><a href="https://www.elcorteingles.es/electronica/"><img src="Img/Electrónica.png" alt="electrónica"
+                            width="180"></a></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>moda mujer</td>
+                <td>moda hombre</td>
+                <td>niña</td>
+                <td>hogar</td>
+                <td>deporte</td>
+                <td>electrónica</td>
+            </tr>
+        </tbody>
+    </table>
+    <section aria-label="verde">
+        <ul>
+            <li><img src="Img/Recogida.jpeg" alt="gratis" width="25" height="25">
+                <a href="https://www.elcorteingles.es/click-collect/">Recogida en tienda <span>gratis</span></a></li>
+            <li><img src="Img/Envío.png" alt="domicilio" width="25" height="25">
+                <a href="https://lc.cx/hwK2_l">Envío a domicilio</a></li>
+            <li><img src="Img/Devolución.png" alt="devolucion" width="25" height="25">
+                <a href="https://lc.cx/8vF62G">Devolución <span>gratis</span> en tienda</a></li>
+            <li><img src="Img/Click&Car.png" alt="click" width="25" height="25"><a href="https://www.elcorteingles.es/click-car/">Click & Car</a></li>
+        </ul>
+    </section>
+
+    <!--FOOTER + FORMULARIO= CAMPO DE CORREO ELECTRÓNICO-->
+    <footer>
+        <section aria-label="formulario">
+            <form action="#" method="post">
+            <fieldset>
+                <legend>Datos básico del formulario</legend>
+                <label for="email">Añade tu correo electrónico</label><br>
+                <input type="email" id="email" name="email" class="form-control" placeholder="usuario@example.com"
+                    required><br>
+                <small> Este sera el identificador de la cuenta</small><br>
+                <label for="password">Crea tu contraseña fuerte</label><br>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Nueva contraseña"
+                    required><br>
+                <small>Tu contraseña debe tener al menos:<br> 8 caracteres, 1 número,1 miscúla, 1mayúcula, 1
+                    caracter especial</small>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos Personales</legend>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+
+                <label for="apellido">Primer apellido:</label>
+                <input type="text" id="apellido" name="apellido" class="form-control" placeholder=apellido>
+
+                <label for="apellidos">Segundo apellido (Opcional)</label>
+                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="2º apellido">
+            </fieldset>
+            
+            <section aria-label="botones_inscripcion">
+                <button type="submit" class="btn-success">Continuar</button>
+                <button type="reset" class="btn-secondary">Borrar</button>
+            </section>
+            </form>
+        </section>
+    </footer>
+</body>
+
+</html>

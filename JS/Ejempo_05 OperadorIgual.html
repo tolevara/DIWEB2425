@@ -1,0 +1,38 @@
+<!--Ejemplo_05_OperadorIgual.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // let = DECLARACION DE VARIABLE //
+        function iniciar() {
+
+            // = ES ASIGNACION
+            // == ES COMPARACION (igual)
+            // === ES COMPARACION ESTRICTA (igual con tipos)
+            let num1 = "5";
+            let num2 = 5;
+            //LOS METODOS DE WINDOW PERMITEN QUITAR EL WINDOW
+            alert(`Èl valor de num1 = ${num1}`);
+            alert(`Comparo num1 y num2: `+ (num1==num2));
+            alert(`Comparo estricto num1 y num2: `+ (num1===num2));
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3"> <!-- SEPARA EL BOTON DEL MARGEN IZQUIERDO -->
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">Hoy</button>
+            <!--onclick ATRIBUTO ES UN EVENTO-->
+        </form>
+    </main>
+</body>
+
+</html>

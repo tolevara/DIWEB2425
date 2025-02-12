@@ -1,0 +1,79 @@
+<!-- Ejemplo_18_POO_Herencia.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+        //CON LA HERENCIA PUEDO REUTILIZAR CÓDIGOS//
+        //DEFINO UNA CLASE PADRE ( O SUPER CLASE)
+
+        class Vehiculo {   //TRIBUTOS//
+            modelo = "";
+            precio = 0.0;
+            velocidad = 0;
+
+            constructor(modelo, precio) {   //CONSTRUCTOR//
+                this.modelo = modelo;
+                this.precio = precio;
+            }
+
+            acelerar(aceleracion) {          //MÉTODO PINTAR OBJETO//
+                this.velocidad += aceleracion;
+            }
+
+            frenar(frenado) {               //MÉTODO PINTAR OBJETO//
+                this.frenar -= frenado;
+            }
+
+            imprimir() {                    //MÉTODO PINTAR OBJETO//
+                return JSON.stringify(this, null, 2);
+            }
+
+        }
+        //ATRIBUTO PROPIO, MÁS LA HERENCIA//
+        class Moto extends Vehiculo {   //extends, SIGNIFICA HEREDAR LOS ATRIBUTOS Y LOS MÉTODOS//  
+            ruedas = 2;
+
+            //EL CONSTRUCTOR DE MOTOS USANDO LA PALABRA RESERVADA DE SUPER//
+            constructor(modelo, precio) {
+                super(modelo, precio)      //super ES EL constructor DEL PADRE//
+            }
+        }
+
+        class Coche extends Vehiculo {
+            ruedas = 4;
+
+            constructor(modelo, precio) {
+                super(modelo, precio)
+            }
+        }
+        function iniciar() {  //CREAMOS LOS OBJETOS DE LAS CLASES HIJAS//
+            let motoAlfonso = new Moto("Piaggio Zip", 600);
+            let cocheMJose = new Coche("Nissan Micra", 8000);
+            motoAlfonso.acelerar(50);
+            cocheMJose.acelerar(100);
+
+            //Ve la guardia civil//
+            cocheMJose.frenar(20);
+
+            alert(`Moto Alfonso: \n ${JSON.stringify(motoAlfonso, null, 2)}`);
+            alert(`Coche María José: \n ${JSON.stringify(cocheMJose, null, 2)}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>

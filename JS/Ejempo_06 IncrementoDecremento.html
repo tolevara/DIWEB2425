@@ -1,0 +1,44 @@
+<!--Ejemplo_06_IncrementoDecremento.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // let = DECLARACION DE VARIABLE //
+        function iniciar() {
+
+           // ++ OPERADOR DE INCREMENTO
+           // -- OPERADOR DE DECREMENTO
+
+            let num1 = 5; // EL USUARIO DA UN 5 Y LE DA LA TABLA DEL 5 //
+            alert(`El valor de num1 = ${num1}`);
+
+            num1++; //Equivale a: nun1 = num1 + 1: SERIA 5+1=6
+            alert(`El valor de num1 = ${num1}`);
+
+            num--; //Equivale a: num1 = num1 - 1: SERIA 6-1=5 
+            alert(`El valor de num1 = ${num1}`);
+
+            // ACORTAR INCREMENTOS/DECREMENTOS//
+            // (num1 = num1 + 1) es igual ~ (num1 + = 1) //
+            num1 + = 1;
+            alert(`El valor de num1 = ${num1}`);
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3"> <!-- SEPARA EL BOTON DEL MARGEN IZQUIERDO -->
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">IncrementoDecremento</button>
+            <!--onclick ATRIBUTO ES UN EVENTO-->
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+<!--Ejemplo 15-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <!--vamos a añidrir FontAwesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+
+
+    <style>
+        /*Para poner una fuente local descargada*/
+        @font-face {
+            font-family: lato;
+            src: url(Lato/Lato-Light.ttf);
+        }
+
+        /*Vamos a formatear la página*/
+        /*Ejemplo de pregunta de examen: FORMATEA LA PAGINA CON LA FUENTE lato DE 200,
+        margen DE 10px Y RELLENO DE 10px*/
+
+        body {
+            font-family: Lato, "Open Sans", roboto;
+            font-weight: 200;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        /*
+ Ancho del formulario del 100%, altura 300px y centrado horizontalmente.*/
+        form {
+
+            margin: auto;
+            height: 300px;
+            width: 100%;
+        }
+
+        /* RECUADROS DE FORMULARIO*/
+        /*Para el fieldset,poner una sombra de 5px en horizontal
+         5px en vertical, 10px de difuminado y gris */
+        /*box-shadow es = SOMBREADO DEL BORDE*/
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 5px 5px 5px gray;
+            background-color: #f9f9f9;
+            padding: 20px;
+            width: 40%;
+            height: 270px;
+            float: left;
+            margin-bottom: 20px;
+        }
+
+        /*TITULO DEL FIELDSET*/
+        /*margin:0 auto = CENTRADO*/
+        legend {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        /*ENGLOBA EL label Y EL input*/
+        section {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        label[for="nacimiento"] {
+            left: 150px;
+
+        }
+
+        label {
+            position: absolute;
+            top: 20%;
+            left: 10px;
+        }
+
+        input:not([type="radio"]):not([type="submit"]):not([type="reset"]) {
+            /*(not) EXCLUYE LO DEL CORCHETE*/
+            font-size: 16px;
+            width: 80%;
+            padding: 10px;
+            /* (border)SIRVE PARA TODOS LOS input(TEXTO,CONTRASEÑA)*/
+            border-radius: 10px;
+            border: 1px solid #747775;
+
+        }
+
+        input:not([type="radio"]):not([type="submit"]):not([type="reset"]):focus {
+            border-color: #0b57d0;
+            background-color: beige;
+            outline: none;
+        }
+
+        section[aria-label="crear"],
+        section[aria-label="usar"] {
+            margin-bottom: 20px;
+            display: flex;
+            /*PONE LOS BOTONES A LA DERECHA*/
+        }
+
+        /* ESTO INCLINA LOS label, COMO LA CURSIVA*/
+        section[aria-label="crear"] label:hover,
+        section[aria-label="usar"] label:hover {
+            transform: skew(5deg, 5deg);
+
+
+        }
+
+
+        input[type="radio"] {
+            margin: auto;
+            width: auto;
+            margin-top: 10PX;
+        }
+
+        i {
+            /*LOS ICONOS SE CONSIDERAN TEXTO*/
+            margin-right: 20px;
+            color: blue;
+            text-shadow: 5px 5px 5px grey;
+            font-size: 20px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            clear: both;
+            display: block;
+            margin: 10 auto;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /*APLICAMOS TRANSICIONES A LOS label*/
+        label {
+            transform: translateY(-50%);
+            transition: all 0.5s ease;
+            pointer-events: none;
+
+
+
+        }
+
+        /*TRANSFORMACION*/
+        input[type="radio"]:hover {
+            transform: scale(2);
+        }
+
+        /*SUBIR label AL ENFOCAR O ESCRIBIR */
+
+        input:focus+label {
+        
+
+
+
+
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Informacion personal</legend>
+            <!--AGRUPAMOS LOS (label y input) DENTRO DE LOS (section) PARA HACER UN MEJOR EFECTO VISUAL -->
+            <section aria-label="nombre">
+                <input type="text" name="nombre" id="nombre"><br>
+                <label for="nombre">Nombre</label>
+
+            </section>
+
+            <section aria-label="apellidos">
+                <input type="text" name="apellidos" id="apellidos"><br>
+                <label for="apellidos (opcional)">Apellidos (opcional)</label>
+
+            </section>
+
+            <section aria-label="nacimiento">
+                <input type="date" name="nacimiento" id="nacimiento"><br>
+                <label for="nacimiento">Fecha de nacimiento</label>
+
+            </section>
+
+            <section aria-label="genero">
+                <select name="genero" id="genero">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="mujer">Mujer</option>
+                    <option value="hombre">Hombre</option>
+                    <option value="prefiero no decir">Prefiero no decir</option>
+                </select>
+            </section>
+
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Opciones de cuenta</legend>
+            <section aria-label="crear">
+                <label for="cerar"><i class="fa-solid fa-m"></i> Crear dirección Gmail</label>
+                <input type="radio" name="direccion" id="crear" value="crear"><br>
+            </section>
+
+            <section aria-label="usar">
+                <label for="usar"><i class="fa-regular fa-envelope"></i>Usar tu correo</label>
+                <input type="radio" name="direccion" id="usar" value="usar"><br>
+            </section>
+
+            <hr>
+            <section aria-label="usuario">
+                <input type="text" name="usuario" id="usuario"><br>
+                <label for="usuario">Usuario</label>
+
+            </section>
+
+            <section aria-label="clave">
+                <input type="password" name="clave" id="clave"><br>
+                <label for="clave">Contraseña</label>
+
+            </section>
+
+            <section aria-label="clave2">
+                <input type="password" name="clave2" id="clave2"><br>
+                <label for="clave2">RepetirContraseña</label>
+
+            </section>
+
+        </fieldset>
+
+        <input type="submit" value="Crear cuenta">
+        <input type="reset" value="Borrar datos">
+
+
+
+
+
+
+
+</body>
+
+</html>

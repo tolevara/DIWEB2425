@@ -1,0 +1,105 @@
+<!--Ejercicio_04_DOM.html-->
+<!--BASADO EN EL BOLETIN DE MARTA Ejercicio: 16--> <!--CONTIENE PRISMA DEL EXAMEN-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletin Marta Nº16 </title>
+</head>
+
+<body>
+
+    <h1 id="titular">Titulo1</h1>
+
+    <section id="contenedor">
+        <p id="principal">Párrafo principal </p>
+        <p class="secundario">Párrafo 2.1</p>
+        <p class="secundario">Párrafo 2.2</p>
+        <p class="secundario">Párrafo 2.3</p>
+    </section>
+    <section> <!--ESTE section ES PARA EL PRISMA-->
+        <p>volumen Prisma </p>
+        Base: <input type="number" name="base" id="base"><br>
+        Altura: <input type="number" name="altura" id="altura"><br>
+        Color: <input type="color" name="color" id="color"><br>
+    </section>
+
+    <!--MUY IMPORTANTE!! Para trabajar con el DOM, tiene que estar toda la estructura CARGADA!!-->
+    <script>
+        function imprimeH1() {                                             //document-> objetop documento (página web)
+            let titulo = document.getElementById("titular").textContent;  //getElementById->método de objeto; devuelve 1 objeto
+            alert(h1);                                                   //textContent->atributo del objeto; contenido texto
+            console.log(document.querySelector("titular").textContent); //ESTO ES LO MISMO QUE EL DE ARRIBA//
+            console.log(document.querySelector("#titular"));     //ESTO ES LO MISMO QUE LOS DOS PERO SALE EL OBJETO ENTERO//                                                          
+        }
+
+        function imprimeParrafos() {
+            let parrafos = document.querySelectorAll("p");
+            let cadena = "";
+            for (const p of parrafos) {  //for of(foreach moderno)//
+                cadena += p.textContent + "\n";  //SALTO DE LINEA "\n"//
+            }
+        }
+
+        function volumenPrisma() {
+            let base = document.querySelector("#base").value;
+            let altura = document.querySelector("#altura").value;
+            alert(`El volumen del prisma es  ${base * altura}`);
+
+            //ESTO ES LO QUE PIDE EN EL EXAMEN!!//
+            base = parseInt(prompt("Dame la Base:"));
+            base = parseInt(prompt("Dame la Altura:"));
+            alert(`El volumen del prisma es ${base * altura}`);
+        }
+
+        function agregaParrafo() {
+            let parrafo = prompt("Dame un texto");
+            let p = document.createElement("p");
+            p.textContent = parrafo;
+            let section = document.querySelector("#contenedor");
+            section.appendChild(p);
+        }
+
+        function quitaParrafo() {
+            let parrafo = parseInt(prompt("Quita un texto 1-5"));
+            let parrafos = document.querySelectorAll("p");
+            parrafos[parrafo-1].parentNode.removeChild(parrafos[parrafo-1]) = parrafo;
+            let section = document.querySelector("#contenedor");
+            section.appendChild(p);
+        }
+
+        function cambiaFondo() {              //ESTO ES EL CSS//
+            let rgb = document.getElementById("color").value;
+            document.body.style.backgroundColor = rgb;
+        }
+
+        function principal() {
+            let cadena = `\t 1. Imprime <h1>> 
+         2. Imprime párrafo <p> 
+         3. Volumen Prisma  
+         4. Añadir párrafo 
+         5. Eliminar párrafo
+         6. Cambiar fondo
+         7. Salir
+         Elije opción:`;
+            let opcion = parseInt(prompt(cadena));
+            switch (opcion) {
+                case 1: imprimeH1(); break;
+                case 2: imprimeParrafos(); break;
+                case 3: volumenPrisma(); break;
+                case 4: agregaParrafo(); break;
+                case 5: quitaParrafo(); break;
+                case 6: cambiaFondo(); break;
+                default: alert("Fin Programa")
+                    break;
+            }
+        }
+    </script>
+
+    <button type="submit" onclick="principal()">Iniciar</button>
+
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+/* Nombre: Maria José Toledano Vara */
+
+/* Reglas Generales */
+/* ############################################# */
+/*01. */
+@font-face {
+    font-family:Inter;
+    src: url(font/Inter.ttf);
+}
+body {
+    font-family:Inter;
+    font-size: 0.7em;
+    background-color: 241, 241, 241;
+}
+
+
+/*02. */
+
+/*03. */
+header {
+height: 80px;
+width: 100%;
+background-color: white;
+border-radius: 20px;
+}
+
+/*04. */
+aside {
+    border: 5px solid white;
+    border-radius: 20px
+    border-top-overline
+}
+
+
+/* Reglas Header (Cabecera)*/
+/* ############################################# */
+/*05. */
+header figure, header nav {
+     float: left;
+     position: absolute 20px;
+
+}
+
+
+/*05 (opcional). */
+header figure img {
+    border-top-left-radius: 10%;
+    filter:blur(0.2px);
+    width: 150px;
+    height: 50px;
+    
+}
+
+/*06. */
+body header nav form {
+    margin-top: 15px;
+    width: 45%;
+    text-align: right;
+    margin-left: 200px;
+}
+
+/*07. */
+body header nav form input {
+    border: 1px color #df5521;
+    padding-top: 5px;
+    padding-bottom:5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-shadow: 5px 5px 10px #df5521;
+    border-radius: 10px;
+}
+
+
+/*08. */
+body header nav form img {
+vertical-align: middle;
+}
+
+/*09. */
+body header nav {
+position: absolute;
+right: 40px;
+top: 40px;
+}
+
+/*10. */
+body header nav a {
+text-decoration: none;
+color: 100,100,100;
+opacity: 90%;
+margin-right: 10px;
+margin-left: 10px;
+font-size: 15px;
+}
+
+
+/* Reglas Section Mensaje (Banner)*/
+/* ############################################# */
+/*11. */
+
+/*12. */
+
+/* Reglas Aside (Laterales)*/
+/* ############################################# */
+/*13. */
+body aside {
+    position: absolute;
+    width: 18%;
+    margin-left: 30px;
+    padding: 10px;
+    z-index: 10;
+}
+
+/*14. */
+body > aside + section h2{
+    color: #df5521;
+}
+/* Reglas Aside Izquierdo (Lateral Izquierdo)*/
+/* ############################################# */
+/*15. */
+body > header + section + aside{
+    top: 100px;
+    margin-right: 10px;
+}
+
+/*16. */
+body > header + section + aside{
+    display: block;
+}
+
+/*17. */
+
+/*18. */
+
+/*19. */
+
+/*20. */
+
+/*21. */
+
+/*22. */
+
+/* Reglas Main */
+/* ############################################# */
+/*23. */
+
+
+/*24. */
+
+/*25. */
+
+/*26. */
+
+/*27. */
+
+/*28. */
+
+/*29. */
+
+/* Reglas Aside Derecho*/
+/* ############################################# */
+/*30. */
+
+/*31. */
+
+/*32. */
+
+/*33. */
+
+/*34. */
+
+/*35. */
+
+/* Reglas Footer*/
+/* ############################################# */
+/*36. */
+footer{
+    position: relative;
+    top: 750px;
+    width: 100%;
+    padding: 20px;
+}
+
+/*37. */
+footer > table > tr{
+    margin-left: 40%;
+    border-spacing: 40px;
+
+}
+
+/*38. */
+footer > table > tr a{
+display: inline;
+display: block;
+color: #df5521;
+text-decoration: underline;
+
+}
+
+/*39. */
+
+
+/*40. */
+footer a::first-letter {
+    font-size: 20px;
+    font-weight: 20px;
+
+}
+/* ############################################# */
+/* FIN SECCIÓN CSS */
+/* ############################################# */

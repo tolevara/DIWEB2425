@@ -1,0 +1,93 @@
+<!-- Ejemplo_16_BucleWhile.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+        //   DECLARACIONES DE FUNCIONES    //
+
+        //FUNCIÓN SUMA (0E 1S)
+        function suma() {
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 + num2;
+            return resultado;
+        }
+
+        //FUNCIÓN RESTA (NE 1S) -> EL MÁS DIFICIL
+        function resta(num1, num2) {  //FUNCION CON PARÁMETRO PARA LAS ENTRADAS//
+            let resultado = num1 - num2;
+            return resultado;
+        }
+
+        //FUNCIÓN PRODUCTO (0E 0S) -> EL MÁS FACIL
+        function producto() {
+            let num1 = parseInt(prompt("Dame Nº1"));
+            let num2 = parseInt(prompt("Dame Nº2"));
+            let resultado = num1 * num2;
+            alert(resultado);
+        }
+
+        //FUNCIÓN DIVISIÓN (NE 0S)
+        function division(num1, num2) {
+            let resultado = num1 / num2;
+            alert(resultado);
+        }
+
+        function iniciar() {
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(`--MENU PRINCIPAL--
+                    1.Sumar
+                    2.Restar
+                    3.Multiplicar
+                    4.Dividir
+                    5.Salir`));
+
+
+                switch (opcion) {   //SWITCH = A VARIOS if//
+                    case 1:
+                        alert(suma());
+                        break;   +  //BREAK = FRENO//
+
+                    case 2:
+                        let num3 = parseInt(prompt("Dame Nº3")); //LOS NOMBRES DE LAS VARIABLES DA IGUAL, SOLO VALE LAS POSICIONES//
+                        let num4 = parseInt(prompt("Dame Nº4"));
+                        alert(resta(num3, num4));
+                        break;
+
+                    case 3:
+                        producto();
+                        break;
+
+                    case 4:
+                        let num1 = parseInt(prompt("Dame Nº1"));
+                        let num2 = parseInt(prompt("Dame Nº2"));
+                        division(num1, num2);
+                        break;
+
+                    default:
+                        alert("OPCIÓN INCORRECTA!");
+                        break;
+                }
+            }
+            alert("SE ACABÓ EL PROGRAMA");
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>

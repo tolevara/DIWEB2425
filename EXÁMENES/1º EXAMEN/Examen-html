@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        fieldset {
+            width: 30%;
+        }
+    </style>
+</head>
+<!--
+
+
+   
+
+ 
+ 
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+    Alta usuario
+    Usuario
+    Clave
+    Correo Electrónico:
+
+        Edad:
+        
+        Sexo:
+        Mujer
+        Hombre
+        
+
+        Tipo
+        Editor
+        Revisor
+        
+        Pais de Nacimiento:
+            Ecuador
+            España
+            Francia
+            
+        Referencia: 
+        Sobre mi...
+        Etiqueta:
+        
+        Artículos por mes (1-50):
+        Horario de acceso estimado: 
+        De 
+        hasta
+        
+        Acceder
+        Cancelar
+
+
+-->
+
+<body>
+    <!-- Comentario! OJO a las estiquetas semánticas -->
+    <p>Esta página web es una página HTML válida.</p>
+
+    <!--Título de Página-->
+    <header>
+        <h1>Ecuador - Wikipedia</h1>
+        <p>
+            Artículo editado a las
+            <time datetime="2024-11-25 12:00">12h del 25/11/24</time>
+        </p>
+    </header>
+    <!--Llista Ordenada y Desordenada-->
+    <aside>
+        <h2>Índice</h2>
+        <h3>Bandera y Escudo</h3>
+        <h3>Himno</h3>
+        <ol>
+            <li><a href="#1">Toponimia</a></li>
+            <li><a href="#2">Historia</a></li>
+            <li><a href="#3">Estado y política</a></li>
+            <ul>
+                <li><a href="#31">3.1 Función Ejecutiva</a></li>
+                <li><a href="#32">3.2 Función Legislativa</a></li>
+            </ul>
+
+            <li>
+                <a href="#4">Organización Territorial</a>
+                <ul>
+                    <li>
+                        <a href="#41">4.1 División Administrativa</a>
+                        <ul>
+                            <li><a href="#411">4.1.1 Parroquias</a>
+                            <li><a href="#412">4.1.2 Cantones</a></li>
+                            <li><a href="#413">4.1.3 Provincias</a></li>
+                    </li>
+                </ul>
+            </li>
+            </ul>
+            </li>
+        </ol>
+    </aside>
+
+    <!--Párrafo-->
+    <p>
+        Ecuador (en quichua, Ecuador; en shuar, Ekuatur), oficialmente República
+        del Ecuador (en quichua, Ecuadorpi Ripuwlika; en shuar, Ekuatur Nunka),
+        es un país soberano constituido en un Estado social, democrático,
+        de derecho y plurinacional, cuya forma de gobierno es la de una
+        república presidencialista, unitaria y descentralizada.
+        Está ubicado en la región noroccidental de América del Sur.
+        Su capital es Quito, y la ciudad más poblada del país es Guayaquil.
+        Es miembro de la Comunidad Andina y está organizado en veinticuatro
+        provincias que a su vez se subdividen en Cantones.
+
+    </p>
+
+    <!--Título, Bandera, Escudo-->
+    <h2>Republica del Ecuador</h2>
+
+    <figure>
+        <a href="#"></a>
+        <img src="Bandera_Ecuador.png" alt="" width="200">
+        <figcaption><a href="https://www.Bandera_Ecuador">Bandera Ecuador</a></figcaption>
+    </figure>
+    <a href="https://www.Bandera_Ecuador"></a>
+
+    <figure>
+        <a href="#">
+            <img src="Escudo_Ecuador.png" alt="" width="200">
+        </a>
+        <figcaption><a href="https://www.Escudo_Ecuador">Escudo Ecuador</a></figcaption>
+    </figure>
+    <p>
+        <!--Párrafo Himno-->
+    <h2>Himno de Ecuador</h2>
+    <details>
+        <summary>Himno</summary><br>
+    </details>
+    <cite>
+        <strong>CORO</strong><br>
+        Salve oh patria mil veces oh patria<br>
+        <ins>¡Gloria a ti!</ins><sup>(2 veces)</sup><br>
+        Ya tu pecho, tu pecho rebosa,<br>
+        gozo y paz ya tu pecho rebosa,<br>
+        y tu frente, tu frente radiosabr <br>
+        más que el sol contemplamos lucir.
+    </cite>
+    <!--Toponimia,Historia,Estados y política-->
+    <p>
+    <h2>Toponimia</h2><br>
+    La primera referencia que se tiene de este país con relación al Ecuador terrestre está registrada en Noticias <br>
+    secretas de América en 1826, una publicación donde se recopila estudios realizados durante el transcurso del <br>
+    siglo
+    XVIII, además de incluir los de la misión geodésica francesa; en esa obra se menciona por primera vez <br>
+    a los
+    territorios de Ecuador como jurisdicción de la Real Audiencia de Quito.30​ El nombre de la República del <br>
+    Ecuador
+    hace alusión a la línea ecuatorial de la <ins>Tierra</ins> que recorre
+    sobre territorio ecuatoriano, de este a oeste. <br>
+
+    <h2>Historia</h2> <br>
+    Llegaron inmigrantes amerindios del norte y se mezclaron con el pueblos amazónicos de ascendencia <br>
+    oceánico.​
+    Los primeros asentamientos registrados en el actual territorio ecuatoriano datan 13 500 años,en El <br>Inga,
+    cultura Las Vegas, Chobshi, Cubilán y pinturas rupestres amazónicas del Paleoindio. La época <br>prehispánica
+    comprende cuatro períodos: Paleoindio, Formativo, de Desarrollo Regional y de Integración o <br>Periodo Incaico.
+    <br>
+
+    <h2>Estado y política</h2>
+    El actual Estado ecuatoriano está conformado por cinco funciones estatales: Función <br> Ejecutiva, Función
+    Legislativa, Función Judicial, Función Electoral y Función de Transparencia y Control Social. <br>
+
+    <!--Función Ejecutiva,Función Legislativa-->
+
+    <h2>Función Ejecutiva</h2>
+    La función ejecutiva está delegada al presidente de la República, actualmente ejercida por Guillermo Lasso,<br>
+    acompañado de su vicepresidente, Alfredo Borrero. El presidente es el jefe de Estado y de Gobierno, máximo <br>
+    responsable de la administración pública. <br>
+
+    <h2>Función Legislativa</h2>
+
+    La Función Legislativa se ejerce por la Asamblea Nacional únicamente, que tiene su sede en la ciudad de <br>
+    Quito en
+    el Palacio Legislativo, y está conformada por 137 asambleístas, repartidos en diez comisiones, <br>
+    elegidos para un
+    período de cuatro años. Quince asambleístas elegidos en circunscripción nacional, dos <br>
+    asambleístas elegidos por
+    cada provincia, y uno más por cada doscientos mil habitantes o fracción que supere <br>
+    los ciento cincuenta mil, de
+    acuerdo con el último censo nacional de la población. <br>
+
+    <!--Organización Territorial,División Administrativa-->
+
+    <h2>Organización Territorial</h2><br>
+
+    <h2>División Administrativa</h2>
+    El territorio de Ecuador se divide en: Parroquias (urbanas o rurales), que conforman los Cantones, estos las <br>
+    Provincias, y a su vez las Regiones Administrativas. <br>
+
+    </p>
+
+    <!--Tabla-->
+    <table>
+        <thead>
+            <tr>
+                <th>Región Norte</th>
+                <th>Región Centro Norte</th>
+                <th>Región Centro</th>
+                <th>Región Pacífico</th>
+                <th>Región Liboral</th>
+                <th>Región Centro Sur</th>
+                <th>Región Sur</hd>
+            </tr>
+        <tbody>
+            <tr>
+                <td>Carchi</td>
+                <td>Napo</td>
+                <td>Chimborazo</td>
+                <td>Manabí</td>
+                <td>Bolívar</td>
+                <td>Azuay</td>
+                <td>El Oro</td>
+            </tr>
+            <tr>
+                <td>Esmeraldas</td>
+                <td>Pichincha</td>
+                <td>Cotopaxi</td>
+                <td>Santo Domingo de los Tsáchilas</td>
+                <td>Guayas</td>
+                <td>Cañar</td>
+                <td>Loja</td>
+            </tr>
+            <tr>
+                <td>Imbabura</td>
+                <td>Orellana</td>
+                <td>Pastaza</td>
+                <th rowspan="2"></th>
+                <td>Los Ríos</td>
+                <td>Morona Santiago</td>
+                <td>Zamora Chinchipe</td>
+            </tr>
+            <tr>
+                <td>Sucumbíos</td>
+                <td></td>
+                <td>Tungurahua</td>
+
+                <td>Santa Elena</td>
+                <th colspan="2"></th>
+
+            </tr>
+
+
+        </tbody>
+
+        </thead>
+
+    </table>
+
+    <h2>Parroquias <br>
+        Cantones <br>
+        Provincias</h2><br>
+
+
+
+    <!--Formulario-->
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Alta Usuario</legend>
+            <p>Usuario</p> <br>
+            <p>Clave</p> <br>
+            <P>Correo Eléctronico:</P> <br>
+            <p>Edad:</p>
+
+            <hr>
+            <p>Sexo:</p>
+            <input type="radio" name="sex" id="m" value="m">
+            <label for="m">Mujer</label> <br>
+            <input type="radio" name="sex" id="h" value="h">
+            <label for="h">Hombre</label> <br>
+            <p>Tipo</p>
+            <input type="checkbox" name="Editor[]">
+            <label for="Editor">Editor</label> <br>
+            <input type="checkbox" name="Revisor" []>
+            <label for="Revisor">Revisor</label> <br>
+            <tr></tr>
+
+            <p>País de Nacimiento</p>

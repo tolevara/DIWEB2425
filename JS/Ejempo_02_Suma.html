@@ -1,0 +1,37 @@
+<!--Ejemplo_02_Suma.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // let = DECLARACION DE VARIABLE //
+        function iniciar() {
+            let num1 = 10;
+            let num2 = 20;
+            let resultado = num1 + num2;
+            // + DENTRO DE alert ES CONCATENAR //
+            window.alert("La suma de 10 + 20 =" + resultado); 
+                      // <---------------------> //
+            //window.alert("La suma de 10 + 20 =" + Resultado);// 
+           //CON F12 VEMOS DÓNDE SE ENCUENTRA EL ERROR + CONSOLA//     
+            
+        }
+
+    </script>
+</head>
+
+<body> 
+    <main class="m-3 p-3">  <!-- SEPARA EL BOTON DEL MARGEN IZQUIERDO -->  
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-primary"
+            onclick="iniciar();">sumar 10+20</button>
+            <!--onclick ATRIBUTO ES UN EVENTO-->
+        </form>
+    </main>
+</body>
+
+</html>

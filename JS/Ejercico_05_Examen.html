@@ -1,0 +1,79 @@
+<!--EJERCICIO_05_EXAMEN2022.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen JS 2022</title>
+
+    <script>  //AQUÍ ES DÓNDE SE DEFINE LAS CLASES, ARRIBA DEL TODO!!//
+
+        class Coche {       //ATRIBUTOS//
+            modelo = "";
+            bateria = 0;
+            velocidad = 0;
+
+            constructor(modelo) {  //CONSTRUCTOR//
+                this.modelo = modelo;
+                this.bateria = 40;
+                this.velocidad = 0;
+            }  
+            
+            
+
+        }
+
+
+
+        function nomina() {
+            let anual = parseFloat(prompt("Dame sueldo anual:"));
+            let mensual = anual / 12;
+
+            //EN FUNCION DEL BRUTO, DEFINO EL PORCENTAJE irpf//
+            let irpf = 0;
+            if (anual > 10000 && anual < 20000) {  //EN INTERVALOS SIEMPRE SE PONE "AND" (&&)//
+                irpf = 15;
+            } else if (anual >= 20000 && anual < 30000) {
+                irpf = 25;
+            } else if (anual >= 30000 && anual <= 40000) {
+                irpf = 35;
+            }
+            let neto = mensual - (irpf * mensual / 100) - (mensual * 0.064);
+            return neto;
+        }
+
+        function crearcoche() {
+
+        }
+
+        function menu() {
+            let cadena = `\t 1. Nómina <h1>> 
+         2. Coche   
+         3. Ec2Grado   
+         4. Tabla  Multiplicar
+         5. Salir
+         Elije opción:`;
+
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(cadena));
+
+                switch (opcion) {
+                    case 1: alert(nomina()); break;
+                    case 2: crearcoche(); break;
+                    case 3: ec2grado(a, b, c); break;
+                    case 4: tablasMultiplicar(x, y); break;
+                    default: alert("Fin ")
+                        break;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button type="submit" onclick="menu()">Menu</button>
+</body>
+
+</html>

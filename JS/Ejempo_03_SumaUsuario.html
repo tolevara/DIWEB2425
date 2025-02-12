@@ -1,0 +1,40 @@
+<!--Ejemplo_03_SumaUsuario.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // let = DECLARACION DE VARIABLE //
+        function iniciar() {
+            let num1 = prompt("Dame Nº1");
+            num1 = parseInt(num1);
+            // Ó TAMBIEN:       
+            let num2 = parseInt(promt("Dame Nº2"));
+            let resultado = num1 + num2;
+        /*Conversiones explicitas:
+         parseInt    --> CONVIERTE  a ENTERO
+         parseFlooat --> CONVIERTE  a DECIMAL
+         parseBoolean --> CONVIERTE a BOOLEANO(1, 0) */
+
+            resultado = num1 + num2;
+            // USAMOS LITERALES DE PLANTILLA -> ${variable} //
+            window.alert(`La suma de ${num1} + ${num2} = ${resultado}`) // COMILLAS INVERTIDAS ` //
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3"> <!-- SEPARA EL BOTON DEL MARGEN IZQUIERDO -->
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-primary" onclick="iniciar();">sumar 10+20</button>
+            <!--onclick ATRIBUTO ES UN EVENTO-->
+        </form>
+    </main>
+</body>
+
+</html>

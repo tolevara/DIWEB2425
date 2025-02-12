@@ -1,0 +1,88 @@
+<!-- Ejemplo_19_POO_Encapsulamiento.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+
+        //ENCAPSULAMIENTO HACE PRIVADO ATRIBUTOS Ó MÉTODOS//
+        //PARA ACCEDER USAMOS setter(MODIFICADORES) / getter(OBTENEDORES) Y SON PÚBLICOS//
+        //EVITAN VALORES ERRÓNEOS O ACCESO NO AUTORIZADOS//
+
+    //PARA CONSTRUIR LOS ENCAPSULADO:1ºEL ATRIBUTO, 2ºCONSTRUCTOR, 3ºLOS MÉTODOS CON SU PROPIO JSON PERSONALIZADO
+
+        class Animal {          //CLASE PADRE:Animal//
+            #raza = "";         // ATRIBUTOS PRIVADO USAMOS # //
+            #edad = 0;
+
+            constructor(raza, edad) {  //CONSTRUCTOR SIMPRE ES PÚBLICO Y CONSTRUYE EL OBJETO//
+                this.#raza = raza;
+                this.#edad = edad;
+            //  this.edad = edad; ASÍ SE HACE EN JAVA Y PHP//
+            }
+
+            #mostrarInfo() {          //MÉTODO PRIVADO TAMBIÉN USAMOS #//
+                return {
+                    raza: this.#raza, //CONSTRUYE TU PROPIO JSON//
+                    edad: this.edad, //QUITAMOS # PARA EL USAR EL getter DE MÁS ABAJO//
+                    Tipo: this.constructor.name //ADEMÁS DEFINO QUE TIPO DE ANIMAL ES//
+                }
+            }
+
+            //NO ES OBLIGATORIO PONERLO EN PRIVADO,SÓLO SI QUEREMOS//
+            //LOS DATOS PRIVADOS SE PUEDEN COMPARTIR//
+            /*set edad(cantidad) {
+                this.#edad = cantidad;-> ESTE cantidad SE COJE DE EL DEL PARENTISIS */
+                
+                set edad(cantidad) {  //setter//
+                    if(edad>0) {
+                        this.#edad = cantidad;
+                    }
+                }
+
+                get edad() {    //getter es PÚBLICO//
+                    return this.#edad;
+                }
+
+                imprimir() {
+                    return JSON.stringify(this.#mostrarInfo());
+                }
+            }
+
+            class Perro extends Animal {    //CLASE HIJA ATRIBUTOS PROPIOS PRIVADO//
+                #sonido = "";
+
+                constructor(raza, edad) {
+                    super(raza, edad);
+                    this.#sonido = "GUAU!!!";
+                }
+
+                imprimir() {  //PARSE RECOJE LO QUE VIENE DEL PADRE //
+                    let datos = JSON.parse(super.imprimir());
+                    datos.Sonido = this.#sonido;
+                    return JSON.stringify(datos, null, 2);
+                }
+            }
+
+        function iniciar() {
+            let Paco = new Perro("Galgo Enano",1);
+            alert(`Perrito Paco:\n ${Paco.imprimir()}`); //TITULO DE LA PÁGINA//
+           
+        }
+
+    </script>
+</head>
+
+<body>
+    <main class="m-3 p-3">
+        <form action="#" method="post" class="form">
+            <button type="submit" class="btn btn-success" onclick="iniciar()">Iniciar</button>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!--Ejemplo 11 Alineacion vertical-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Alineacion</title>
+    <style>
+p{
+    border: 1px solid blue;
+    height: 100px;
+    width: 60%; /*Esto no se usa-> align-items: center; justify-items: center;*/
+
+}
+P:nth-last-of-type(2){
+vertical-align: top;
+}
+
+P:nth-of-type(3) span{
+vertical-align: super;
+}
+
+p:nth-of-type(4) span{
+vertical-align: 1.5em;
+}
+
+
+
+img {
+    border: 1px dashed green;
+}
+
+    </style>
+</head>
+<body>
+    <p><img src="cara-feliz.png" alt="#"> <span>Baselin</span></p>
+    <p><img src="cara-feliz.png" alt="#"> <span>Top</span></p>
+    <p><img src="cara-feliz.png" alt="#"> <span>Super</span></p>
+    <p><img src="cara-feliz.png" alt="#"> <span>+1em</span></p>
+
+    
