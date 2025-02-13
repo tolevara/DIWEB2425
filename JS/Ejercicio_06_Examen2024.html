@@ -1,0 +1,128 @@
+<!--EJERCICIO_06_EXAMEN2024.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>--Examen JS 2024</title>
+
+    <script> //LAS clases VAN ARRIBA DENTRO DEL script//
+
+        class EntradaFutbol {
+            partido = '';
+            liga = true;
+            #precio = 100.00;
+
+            constructor(partido, liga, precio) {
+                this.partido = partido;
+                this.liga = liga;
+                this.precio = precio; //ESTE precio ES UN MÉTODO PORQUE NO LLEVA #//
+            }
+            set precio(unPrecio) { //MÉTODO set/get PARA EL ENCASUPLAMIENTO EN ATRIBUTO PRIVADO//
+                if (unPrecio > 0) {
+                    this.#precio = unPrecio;
+                }
+            }
+            get precio() {
+                return this.#precio;
+            }                           //MÉTODOS ESTATICOS//
+            static leerEntrada() {  //static = A NO CREAR OBJETO//
+                let partido = prompt("Dame partido:");
+                let liga = confirm("Es de liga? (Aceptar ->Sí, Cancelar ->No)");
+                let precio = parseFloat(prompt("Dime precio:"));
+
+                return new EntradaFutbol(partido, liga, precio);  //CONSTRUCTOR PARA DEVOLVER OBJETO//
+            }
+
+            static mostrarEntrada(entrada) {
+                alert(JSON.stringify({
+                    Partido: entrada.partido,
+                    Liga: entrada.liga,
+                    Precio: ` ${entrada.precio} €`
+                }, null,2));  //REEMPLAZO Y PINTAR EN VERTICAL//
+            }
+            partidoUEFA() {
+                if(!this.liga) {
+                    this.#precio *= 1.15; // = 15% //
+                } 
+            }
+
+            partidoEspecial() {
+                this.#precio = this.#precio * 1.25; // = 25% //
+            }
+        }
+
+        function verPI() { //  Math.PI //
+            let veoveo = confirm("¿Deseas ver de verdad el valor de PI?")
+            if (veoveo) {  //BOOLEANO FALSE/TRUE
+                alert(`el valor de PI es: ${Math.PI}`);
+            } else {
+                alert("Tú te lo pierdes...");
+            }
+        }
+
+        function volumenPrisma() {
+            let areaBase = parseFloat(prompt("Dame área base:"));
+            let altura = parseInt(prompt("Dame altura"));
+            return `Volumen Prisma = ${areaBase * altura}`;
+        }
+
+        function verPrimo() {          //Nº ALEATORIO = PSEUDO ALEATORIO ENTRE UN RANGO:(1 AL 100)//
+            let semilla = Math.random();  //Pseudoaleatorio del 0 al 100//
+            let max = 100;
+            let min = 1;  //Math.floor = ENTERO INFERIOR: EJEMPLO=45,68 -> 45 (Quita los decimales)//MATH.round-> (redondea)//
+            let aleatorio = Math.floor(semilla * (max - min + 1) + min); //ESTA FORMULA PARA TODOS LOS ALETARIO//
+            alert(aleatorio); //ALEATORIO = IMPREVISIBLE//
+            let divisores = 0; // UN Nº PRIMO SÓLO TIENE DOS DIVISORES(Por si mismo y por 1)//
+            for (let i = 1; i <= aleatorio; i++) {
+                let resto = aleatorio % i;
+                if (resto == 0) {
+                    divisores++;
+                }
+            }
+
+            if (divisores < 3) {
+                alert(`El aleatorio ${aleatorio} Es primo!`);
+
+            } else {
+                alert(`El aleatorio ${aleatorio} No es primo`);
+            }
+        }
+
+        function futbol() {
+            let entrada1 = EntradaFutbol.leerEntrada();
+            entrada1.partidoUEFA();
+            EntradaFutbol.mostrarEntrada(entrada1);
+        }
+
+        function menu() {
+            let cadena = `\t 1. Ver PI
+         2. Volumen Prisma   
+         3. Ver primo   
+         4. Futbol  
+         5. Reservas
+         Elije opción:`;
+
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(cadena));
+
+                switch (opcion) {
+                    case 1: verPI(); break;
+                    case 2: alert(volumenPrisma()); break;
+                    case 3: verPrimo(); break;
+                    case 4: futbol(); break;
+                    case 5: reservas(); break;
+                    default: alert("Fin");
+                        break;
+                }
+            }
+        }                                                     
+    </script>
+</head>
+
+<body>
+    <button type="submit" onclick="menu()">Iniciar Menú</button>
+</body>
+</html>
