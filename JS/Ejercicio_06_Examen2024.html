@@ -40,18 +40,93 @@
                     Partido: entrada.partido,
                     Liga: entrada.liga,
                     Precio: ` ${entrada.precio} €`
-                }, null,2));  //REEMPLAZO Y PINTAR EN VERTICAL//
+                }, null, 2));  //REEMPLAZO Y PINTAR EN VERTICAL//
             }
             partidoUEFA() {
-                if(!this.liga) {
+                if (!this.liga) {
                     this.#precio *= 1.15; // = 15% //
-                } 
+                }
             }
 
             partidoEspecial() {
                 this.#precio = this.#precio * 1.25; // = 25% //
             }
         }
+
+        class Reservas {  //ATRIBUTOS// //EXAMEN//
+            cliente = "";
+            entrada = "2024-03-04";
+            #dias = 3;   //SE PONE # PARA HACERLO PRIVADO, AÑADIR set Y get// //EXAMEN//
+
+            constructor(cliente) {  //CONSTRUCTOR// //EXAMEN//
+                this.cliente = cliente;
+            }
+
+            set dias(diasReserva) {   //SET EXAMEN//
+                if (diasReserva > 1) {
+                    this.#dias = diasReserva;
+                }
+            }
+
+            get dias() {
+                return this.#dias;    //GET EXAMEN ENCAPSULAMIENTO//
+            }
+
+            static leerReserva() {  //PADRE//
+                let cliente = prompt("Dime tu nombre: ");
+                let reserva = new Reservas(cliente);
+                return new Reservas(cliente);
+            }
+
+            mostrarInfo() {  //PADRE//
+                return {
+                    Cliente: this.cliente,
+                    Entrada: this.entrada,
+                    Dias: `${this.dias} dias`,
+                    Tipo: this.constructor.name
+                }
+            }
+
+            imprimeReserva() { //JSON PERSONALIZADO EXAMEN (PADRE)//
+                return JSON.stringify(this.mostrarInfo(), null, 2);
+            }
+        }
+
+        class Facturas extends Reservas {  //CLASE HIJA EXAMEN//
+            importe = 100.00;
+            spa = false;
+
+
+            constructor(cliente, importe, spa) {   //CONSTRUCTOR EXAMEN//
+                super(cliente);
+                this.importe = importe;
+                this.spa = spa;
+                if (spa == true) {
+                    this.importe += 40;
+                }
+
+            }
+
+            static descuento (porcentaje) {
+                this.importe -= this.importe * porcentaje / 100;
+            }
+
+            static leerFactura() {
+                let cliernte = prompt("Dime tu nombre");
+                let importe = parseInt(prompt("Dime importe"));
+                let spa = confirm("¿Desea spa? (Aceptar -> Sí)");
+                return new Facturas(cliente, importe, spa);
+            }
+
+            imprimirFactura() {
+                let miJSON = JSON.parse(super.imprimeReserva());
+                miJSON.Importe_Factura = this.importe;
+                miJSON.SPA = this.spa;
+                return JSON.stringify(miJSON, null, 2);
+            }
+        }
+
+        
 
         function verPI() { //  Math.PI //
             let veoveo = confirm("¿Deseas ver de verdad el valor de PI?")
@@ -96,6 +171,14 @@
             EntradaFutbol.mostrarEntrada(entrada1);
         }
 
+        function reservas(cliente) {  //ESTE ES IGUAL QUE EL EXAMEN// //ENTRADA: cliente SALIDA: factura//
+            let importe = parseFloat(prompt("Dame importe"));
+            let spa = confirm("¿Deseas Spa? (Aceptar-> Sí)");
+            let nuevaFactura = new Facturas(cliente,importe,spa);
+            return nuevaFactura.imprimirFactura();
+
+        }
+
         function menu() {
             let cadena = `\t 1. Ver PI
          2. Volumen Prisma   
@@ -113,7 +196,7 @@
                     case 2: alert(volumenPrisma()); break;
                     case 3: verPrimo(); break;
                     case 4: futbol(); break;
-                    case 5: reservas(); break;
+                    case 5: alert(reservas()); break;
                     default: alert("Fin");
                         break;
                 }
@@ -125,4 +208,5 @@
 <body>
     <button type="submit" onclick="menu()">Iniciar Menú</button>
 </body>
+
 </html>
