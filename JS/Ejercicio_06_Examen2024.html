@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>--Examen JS 2024</title>
+    <title>--</title>
 
     <script> //LAS clases VAN ARRIBA DENTRO DEL script//
 
@@ -96,7 +96,6 @@
             importe = 100.00;
             spa = false;
 
-
             constructor(cliente, importe, spa) {   //CONSTRUCTOR EXAMEN//
                 super(cliente);
                 this.importe = importe;
@@ -104,7 +103,6 @@
                 if (spa == true) {
                     this.importe += 40;
                 }
-
             }
 
             static descuento (porcentaje) {
@@ -125,8 +123,6 @@
                 return JSON.stringify(miJSON, null, 2);
             }
         }
-
-        
 
         function verPI() { //  Math.PI //
             let veoveo = confirm("¿Deseas ver de verdad el valor de PI?")
@@ -176,7 +172,6 @@
             let spa = confirm("¿Deseas Spa? (Aceptar-> Sí)");
             let nuevaFactura = new Facturas(cliente,importe,spa);
             return nuevaFactura.imprimirFactura();
-
         }
 
         function menu() {
