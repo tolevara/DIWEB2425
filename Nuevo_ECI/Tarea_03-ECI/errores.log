@@ -1,0 +1,6 @@
+[18-Feb-2025 20:36:15 UTC] PHP Warning:  file_get_contents(MiConexion_simplificando.sql): Failed to open stream: No such file or directory in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03-CargarBBDD.php on line 19
+[18-Feb-2025 20:36:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Query was empty in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03-CargarBBDD.php:26
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03-CargarBBDD.php(26): mysqli->multi_query()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03-CargarBBDD.php on line 26

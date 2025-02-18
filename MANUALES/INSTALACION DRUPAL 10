@@ -1,0 +1,68 @@
+INSTALACIÓN DE DRUPAL10
+LINUX (consola)
+1. Instalar composer
+- cd ~/Descargas
+- php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+- php composer-setup.php
+- sudo mv composer.phar /usr/local/bin/composer
+- php -r "unlink('composer-setup.php');"
+- composer
+
+2. Configurar PHP y Apache
+- sudo apt install php-mbstring
+- sudo nano /etc/apache2/apache2.conf
+- # Buscar con CTRL + W: /var/www/>
+- # Cambiar AllowOverride None -> AllowOverride All
+- # CTRL + O y CTRL + X
+- sudo service apache2 restart
+
+3. Crear BBDD Drupal:
+- mysql -u root -p # root
+- CREATE DATABASE drupal10;
+- exit
+
+4. Crear proyecto drupal
+- cd /var/www/html
+- composer create-project drupal/recommended-project drupal10
+- # Si da error, probar con sudo
+- sudo chown -R www-data:www-data drupal10
+- sudo chmod -R 755 drupal10
+
+5. Via Web (Navegador)
+- http://localhost/drupal10/web
+- Seguir los pasos de la interfaz...
+- # NOTA: si pone URL limpias
+- sudo a2enmod rewrite
+- sudo systemctl restart apache2
+
+* WINDOWS *
+1. Descargar e instalar composer
+https://getcomposer.org/Composer-Setup.exe
+
+2. Configurar PHP y Apache
+- El archivo de configuración está en apache/httpd.conf
+- Se reiniciar con el Panel de control
+- Si pide el php-mbstring, hay que activarlo en el php.ini
+
+3. Crear BBDD Drupal:
+- Hacerlo con PHPMyAdmin
+
+4. Crear proyecto drupal
+- cd C:\xampp\htdocs
+- composer create-project drupal/recommended-project drupal10
+
+5. Via Web (Navegador)
+- http://localhost/drupal10/web
+- Seguir los pasos de la interfaz...
+
+IMPORTANTE
+Si da algún problema para instalar drupal, sobre todo con las extensiones, es posible que sea porque ha subido la versión de PHP. Actualmente es la 8.4.4
+Solución: reinstalar extensiones...
+sudo apt install php8.4-zip 
+sudo apt-get install php8.4-curl 
+sudo apt-get install php8.4-xml 
+sudo apt-get install php8.4-intl 
+sudo apt-get install php8.4-gd
+sudo apt install php8.4-mysql
+sudo apt-get install php8.4-cgi
+sudo apt-get install php8.4-fpm
