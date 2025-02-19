@@ -11,19 +11,22 @@ USE tarea03_ECI;
 -- Tabla productos
 CREATE TABLE IF NOT EXISTS usuarios
 (
-    correo VARCHAR(40) NOT NULL,   -- Not null = No vacio
-    clave VARCHAR(40) NOT NULL,
-    nombre VARCHAR(40) NOT NULL,
-    apellido1 VARCHAR(40) NOT NULL,
-    apellido2 VARCHAR(40) NOT NULL,
+    (
+    correo VARCHAR(255) NOT NULL,
+    clave VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    autonomo BOOLEAN NOT NULL,
+    nif_cif INT NOT NULL
     PRIMARY KEY pk_usuarios (correo)  -- pk_productos: nombre PK
 ) ENGINE = innodb
 COMMENT = "Tabla usuarios: ENGINE Motor BBDD";
 
 -- Sirve para insertar registros
--- 1º Se insertan registros en tablas principales
+
 USE tarea03_ECI;;
 
 -- Si se van a meter datos en TODOS los campos, no hace falta ponerlos
 INSERT INTO usuarios 
-VALUES ("tolevara@gmail.com", "1234", "Maria José", "Toledano", "Vara");
+VALUES ("tolevara@gmail.com", "1234", "Maria José", "Toledano", "Vara", 1, 12345678);
+
+

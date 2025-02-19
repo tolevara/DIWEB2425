@@ -1,0 +1,25 @@
+INSTALAR MÓDULOS EN DRUPAL
+El archivo /etc/php/8.3/cli/php.ini
+tiene un error de sintaxis en la línea 110.
+Hacemos lo siguiente:
+1. sudo nano /etc/php/8.3/cli/php.ini
+2. Buscamos con CTRL+W esto (sin comillas): "error_reporting"
+3. Cambiamos esto:
+error_reporting = E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT
+Por eso:
+error_reporting = E_ALL
+(Ojo, sale 2 veces)
+4. CTRL + O (guardar) y CTRL + X (salir)
+5. Reiniciar Apache: 
+sudo service apache2 restart
+6. Ahora nos vamos a la raiz del sitio:
+cd /var/www/html/drupal10
+7. Cambiamos los permisos de composer.json
+sudo chown $USER:www-data /var/www/html/drupal10/composer.json
+sudo chmod 664 /var/www/html/drupal10/composer.json
+8. Y ahora instalamos lo que nos hace falta:
+sudo composer require drush/drush
+sudo composer require drupal/admin_toolbar
+9. Agregamos drush al PATH (al sistema)
+echo 'export PATH="$HOME/.composer/vendor/bin:/var/www/html/drupal10/vendor/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc

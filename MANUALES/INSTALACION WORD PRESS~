@@ -25,10 +25,4 @@ sudo chmod -R 755 /var/www/html
 
 
 
-PARA EJECUTAR COMPOSER EN DRUPAL(UN MÓDULO)
-cd /var/www/html/drupal10/
-sudo chown $USER:www-data /var/www/html/drupal10/composer.json
-sudo chmod 664 /var/www/html/drupal10/composer.json
-echo 'export PATH="$HOME/.composer/vendor/bin:/var/www/html/drupal10/vendor/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-sudo composer require 'drupal/book:^2.0'
+
