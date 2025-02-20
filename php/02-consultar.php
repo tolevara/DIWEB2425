@@ -8,7 +8,7 @@ require("funciones.php");
 //LLAMAMOS A LA BASE DE DATOS
 $conexion = conectarBBDD();
 
-//HACEMOS LA CONSULTA
+//HACEMOS LA CONSULTA DE BBDD
 $consulta = "SELECT * FROM productos";
 $filas = $conexion->query($consulta);
 $numFilas = $filas->num_rows;

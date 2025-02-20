@@ -1,0 +1,231 @@
+<!--Examen 04.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen_Toledano_Vara_Maria_Jose_1305.html</title>
+
+    <script>
+
+
+        class BiciElectrica {     //ATRIBUTOS//
+            modelo = "";
+            bateria = 40.0;
+            velocidad = 0;
+
+            constructor(modelo) {  //CONSTRUCTOR//
+                this.modelo = modelo;
+                this.bateria = 40;
+                this.velocidad = 0;
+            }
+
+            acelerar(velocidad) {    //MÉTODOS//
+                this.velocidad = this.velocidad + velocidad;
+                if (velocidad > 10 && velocidad < 30) {
+                    this.bateria = this.bateria * 0.99;    //PORCENTAJE AL -1%//
+                }
+                if (velocidad >= 30 && velocidad < 50) {
+                    this.bateria = this.bateria * 0.98;   //PORCENTAJE AL -2%//
+                }
+            }
+
+            frenar(velocidad) {    //MÉTODOS//
+                this.velocidad = this.velocidad - velocidad;
+                if (velocidad >= 10 && velocidad < 30) {
+                    this.bateria = this.bateria * 1.005;  //PORCENTAJE AL +0.5%//
+                }
+                if (velocidad >= 30 && velocidad < 50) {
+                    this.bateria = this.bateria * 1.01;   //PORCENTAJE AL +1%//
+                }
+            }
+
+            mostrarInfo() {
+                return {
+                    Modelo: this.modelo,
+                    Tipo: this.constructor.name
+                }
+            }
+        }
+
+        class Reserva {  //ATRIBUTOS//
+            #precio;   //CON # SE HACE PRIVADO, AÑADIR set Y get// 
+
+            constructor(nombre, noches, precio) {  //CONSTRUCTOR// 
+                this.nombre = nombre;
+                this.noches = noches;
+                this.#precio = precio;
+            }
+
+            set precio(precio) {
+                if (precio > 1) {
+                    this.#precio = precio;
+                }
+            }
+
+            get precio() {
+                return this.#precio;
+            }
+
+            TotalReserva() {
+                return this.#precio * this.noches;
+            }
+
+            #info() {  //PADRE//
+                return {
+                    Nombre: this.nombre,
+                    Noches: this.noches,
+                    PrecioTotal: `${this.TotalReserva()} €`,
+                    Tipo: this.constructor.name
+                };
+            }
+
+            imprimir() {  //JSON PERSONALIZADO (PADRE)//
+                return JSON.stringify(this.#info(), null, 2);
+            }
+        }
+
+        class ReservaEstandar extends Reserva {  //CLASE HIJA//
+            constructor(nombre, noches,) {
+                super(nombre, noches, 95.90);
+            }
+
+            imprimirEstandar() {
+                let datos = JSON.parse(this.imprimir());
+                datos.Beneficio = "Desayuno Incluido";
+                return JSON.stringify(datos, null, 2);
+            }
+        }
+
+        class ReservaVIP extends Reserva {  //CLASE HIJA//
+            constructor(nombre, noches, spa) {
+                let precioBase = 145.90;
+                if (spa) {
+                    precioBase *= 1.1; //AUMENTA EL 10% SI TIENE spa//
+                }
+                super(nombre, noches, precioBase);
+                this.spa = spa;
+            }
+
+            imprimirVIP() {
+                let datos = JSON.parse(this.imprimir());
+                datos.Spa = this.spa;
+                datos.Beneficio = this.spa ? "Desayuno y GIM Incluidos" : "Desayuno Incluido";
+                return JSON.stringify(datos, null, 2);
+            }
+        }
+
+        function islaAntilla() {
+            let reserva1 = new ReservaEstandar("Iván Rodriguez", 3);
+            let reserva2 = new ReservaVIP("Luis Andrés", 5, true);
+            let reserva3 = new ReservaVIP("Pablo Valentin Diez", 7, false);
+
+            alert(reserva1.imprimirEstandar());
+            alert(reserva2.imprimirVIP());
+            alert(reserva3.imprimirVIP());
+
+        }
+
+        function biciElectrica() {
+            let miBici = new BiciElectrica("Xiaomi Electric Bike");
+            alert(JSON.stringify(miBici, null, 2));
+            miBici.acelerar(35);
+            alert(JSON.stringify(miBici, null, 2));
+            miBici.frenar(20);
+            alert(JSON.stringify(miBici, null, 2));
+        }
+
+        function tablaM() {
+            let num = parseInt(prompt("Dime la tabla de Multiplicar:"));
+            let cadena = "";
+            for (let i = 10; i > 1; i--) {  //VA DE MAYOR A MENOR//
+                cadena += `${num} x ${i} = ${num * i} \n`;
+            }
+            return cadena;
+
+            /*let num = parseInt(prompt("Dime la tabla de Multiplicar:"));
+            let cadena = "";
+            for (let i = 1; i <= 1; i++) {  //VA DE MENOR A MAYOR//
+                cadena += `${num} x ${i} = ${num * i} \n`;
+            }
+            return cadena;*/
+        }
+
+        function volumen() {
+            let cadena = `SUBMENU VOLUMENES
+            1. Prisma
+            2. Cilindro
+            3. Cono
+            4. Esfera
+            5. Salir`;     // submenu
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(cadena));
+
+                switch (opcion) {
+                    case 1:
+                        let base1 = parseInt(prompt("Dame la Base:"));
+                        let altura1 = parseInt(prompt("Dame la Altura:"));
+                        alert(`El volumen del prisma es ${base1 * altura1}`); break;
+                    case 2:
+                        let  radio2 = parseInt(prompt("Dame el Radio:"));
+                        let  altura2 = parseInt(prompt("Dame la Altura:"));
+                        alert(`El volumen del cilindro es ${Math.PI * radio * radio * altura1}`); break;
+                    case 3:
+                        let areadebase3 = parseInt(prompt("Dame el Área de la Base:"));
+                        let altura3 = parseInt(prompt("Dame la Altura:"));
+                        alert(`El volumen del cilindro es ${areadebase3 * altura3}`); break;
+                        ; break;
+                    case 4:
+                        let radio4 = parseInt(prompt("Dame el Radio:"));
+                        alert(`El volumen del cilindro es ${(4/3) * Math.PI * radio * radio}`); break;
+                        ; break;
+                    default: alert("Fin");
+                        break;
+                }
+            }
+
+            /* let base = document.querySelector("#base").value;
+             let altura = document.querySelector("#altura").value;
+             alert(`El volumen del prisma es  ${base * altura}`);*/
+        }
+
+        function menu() {
+            let cadena = ` Elije opción: \t 
+            1. Tabla
+            2. Volúmenes
+            3. Bici Eléctica
+            4. Reserva 
+            5. Salir `;
+
+            let opcion = 0;
+            while (opcion < 5) {
+                opcion = parseInt(prompt(cadena));
+
+                switch (opcion) {
+                    case 1: alert(tablaM()); break;
+                    case 2: volumen(); break;
+                    case 3: biciElectrica(); break;
+                    case 4: islaAntilla(); break;
+                    default: alert("Fin");
+                        break;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <section>
+        <p>volumen Prisma </p>
+        Base: <input type="number" name="base" id="base"><br>
+        Altura: <input type="number" name="altura" id="altura"><br>
+        Color: <input type="color" name="color" id="color"><br>
+    </section>
+    <hr>
+
+    <button type="submit" onclick="menu()">Iniciar Menu</button>
+</body>
+
+</html>

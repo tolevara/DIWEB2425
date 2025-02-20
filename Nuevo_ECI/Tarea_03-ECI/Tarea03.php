@@ -3,16 +3,58 @@
 require("errores.php");
 require("funciones.php");
 
+// LLAMAMOS A LA BASE DE DATOS /
+$conexion = conectarBBDD(); //Primera llamada (PRIMER PASO)//
+
+// La consulta se hace siempre
+$consulta = "SELECT * FROM usuarios";
+$filas = $conexion->query($consulta);
+$numFilas = $filas->num_rows;
+$alerta = "Nº de Registros:" . $numFilas;
+
 /* RECOGEMOS DATOS DEL FORMULARIO */
-$alerta = "Mensaje...";
+$alerta = "Para Autónomos...";
 
 if (isset($_REQUEST['enviar'])) {
-    // LLAMAMOS A LA BASE DE DATOS //
-    $conexion = conectarBBDD(); //Primera llamada (PRIMER PASO)//
 
 
+
+    $correo = $_REQUEST['correo'] ?? '';
+    $clave = $_REQUEST['clave'] ?? '';
+    $nombre = $_REQUEST['nombre'] ?? '';
+    $autonomo = $_REQUEST['autonomo'] ?? '';
+    $nif_cif = $_REQUEST['nif_cif'] ?? '';
+
+    $alerta = " correo: $correo
+        clave: $clave
+        nombre: $nombre
+        autonomo: $autonomo
+        nif_cif: $nif_cif";
+
+    // Preparar la sentencia (SEGUNDO PASO)
+    $sentenciaSQL = "INSERT INTO usuarios (correo, clave, nombre, autonomo, nif_cif) 
+    VALUES (?,?,?,?,?)";
+
+    $sentenciaPreparada = $conexion->prepare($sentenciaSQL); //(Primera Encriptacion"normalita")//
+
+    $sentenciaPreparada->bind_param(
+        "sssii", //("sssii")= s-> string/date; i-> int; d-> decimal//
+        $correo,
+        $clave,
+        $nombre,
+        $autonomo,
+        $nif_cif
+    );
+
+    $ejecutaSQL = $sentenciaPreparada->execute(); //booleano//
+    if ($ejecutaSQL) {
+        $alerta = "<br> autonomo";
+    } else {
+        $alerta = "<br> ERROR FATAL (EXPLOTA!!)";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,12 +63,14 @@ if (isset($_REQUEST['enviar'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>El Corte Inglés</title>
     <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <style>
+
+    </style>
 </head>
 
 <!--LOGO "EL CORTE INGLES"-->
 
 <body>
-
     <header>
         <p>Descárgate aquí nuestra <span> App.</span></p>
 
@@ -38,7 +82,7 @@ if (isset($_REQUEST['enviar'])) {
         <nav>
             <form action="#" method="get" role="search">
                 <label for="buscar" class=""></label>
-                <input type="text" naime="buscar" id="buscar" placeholder="¿Qué estás buscando?" aria-label="buscar">
+                <input type="text" name="buscar" id="buscar" placeholder="¿Qué estás buscando?" aria-label="buscar">
                 <!--LOGO "LUPA"-->
                 <button type="submit">
                     <a href="https://www.elcorteingles.es/search-nwx/"></a>
@@ -54,7 +98,7 @@ if (isset($_REQUEST['enviar'])) {
                     src="Img/Usuario.png" width="20" alt="Usuario"></a>
             <a
                 href="https://cuenta.elcorteingles.es/oauth/authorize?response_type=code&scope=openid%20profile%20plans&client_id=rjx5snOWlh40SgcE0dg2guk4YnXhECYd&redirect_uri=https%3A%2F%2Fwww.elcorteingles.es%2Fecivuestore%2Fsession%2Fcallback%3Fto%3D%252F&back_to=https%3A%2F%2Fwww.elcorteingles.es%252F&locale=es&_gl=1*i0a90v*_gcl_au*MTkzNjczMTA0My4xNzM0MDQxMjgy*_ga*MTc3NjA4NzA1MC4xNzMzMzQ5NTEz*_ga_XG9L1L3E0D*MTczNjE5NzY3Ny4zMy4wLjE3MzYxOTc2NzguNTkuMC4w"><img
-                    src="Img/Corazon2.png" widt="27" alt="corazon2"></a>
+                    src="Img/Corazon2.png" width="27" alt="corazon2"></a>
             <a href="https://www.elcorteingles.es/"><img src="Img/Cesta.png" width="28" alt="cesta"></a>
         </aside>
 
@@ -137,18 +181,25 @@ if (isset($_REQUEST['enviar'])) {
         </ul>
     </section>
 
+
+
     <!--FOOTER + FORMULARIO= CAMPO DE CORREO ELECTRÓNICO-->
     <footer>
+        <section>
+            <p class="alert alert-primary m-3 w-50" style="white-space: pre-line;">
+                <?php echo $alerta; ?>
+            </p>
+        </section>
         <section aria-label="formulario">
             <form action="#" method="post">
                 <fieldset>
                     <legend>Datos básico del formulario</legend>
-                    <label for="email">Añade tu correo electrónico</label><br>
-                    <input type="email" id="email" name="email" class="form-control"
+                    <label for="correo">Añade tu correo electrónico</label><br>
+                    <input type="email" id="correo" name="correo" class="form-control"
                         placeholder="usuario@example.com     (Este es el identificador de la cuenta)" required><br>
                     <small> </small><br>
-                    <label for="password">Crea una contraseña fuerte</label><br>
-                    <input type="password" id="password" name="password" class="form-control"
+                    <label for="clave">Crea una contraseña fuerte</label><br>
+                    <input type="password" id="clave" name="clave" class="form-control"
                         placeholder="Nueva contraseña" required><br>
                     <small>Tu contraseña debe tener al menos:<br> 8 caracteres, 1 número, 1 minúscula, 1 mayúcula, 1
                         carácter especial</small>
@@ -156,16 +207,27 @@ if (isset($_REQUEST['enviar'])) {
 
                 <fieldset>
                     <legend>Datos Personales</legend>
-
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+                </fieldset>
 
-                    <label for="apellidos">Primer apellido:</label>
-                    <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellido">
 
-                    <label for="apellidos">Segundo apellido: (Opcional)</label>
-                    <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="2º Apellido">
+                <fieldset>
 
+                    <legend>Autónomo:</legend> <!--AQUÍ EMPIEZA LA PARTE DE AUTÓMO-->
+                    <nav class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="autonomo" id="si" value="1">
+                        <span class="form-check-label" for="si">Si</span>
+                        <input class="form-check-input" type="radio" name="autonomo" id="no" value="0">
+                        <span class="form-check-label" for="no">No</span>
+                    </nav>
+                    <br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Documento:</legend>
+                    <label for="nif_cif">Nif_Cif:</label>
+                    <input type="number" id="nif_cif" name="nif_cif" class="form-control" placeholder="Nif_Cif">
                 </fieldset>
 
                 <section aria-label="botones_inscripcion">
@@ -174,6 +236,43 @@ if (isset($_REQUEST['enviar'])) {
                 </section>
             </form>
         </section>
+
+        <!--EN EL class DEFINO booststrap-->
+        <section class="container aling-center m-e w-70 bg-primary"> <!--bg = (COLORES)-->
+            <!-- La tabla aparece siempre -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Correo</th>
+                        <th>Clave</th>
+                        <th>Nombre</th>
+                        <th>Autonomo</th>
+                        <th>NIF-CIF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    //ASOCIO LA SALIDA A SU CAMPO
+                    $usuarios = $filas->fetch_all(MYSQLI_ASSOC);
+                    foreach ($usuarios as $usuario) {
+
+                    ?>
+                        <!--CONSTRUCCION DE TABLA CON HTML-->
+                        <tr>
+                            <td><?php echo $usuario['correo']; ?></td>
+                            <td><?php echo $usuario['clave']; ?></td>
+                            <td><?php echo $usuario['nombre']; ?></td>
+                            <td><?php echo $usuario['autonomo']; ?></td>
+                            <td><?php echo $usuario['nif_cif']; ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+        </section>
+
     </footer>
 </body>
 

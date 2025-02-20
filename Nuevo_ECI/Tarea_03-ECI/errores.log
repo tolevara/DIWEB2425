@@ -4,3 +4,43 @@ Stack trace:
 #0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03-CargarBBDD.php(26): mysqli->multi_query()
 #1 {main}
   thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03-CargarBBDD.php on line 26
+[20-Feb-2025 18:13:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'autonomo' in 'field list' in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:30
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php(30): mysqli->prepare()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 30
+[20-Feb-2025 18:13:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'autonomo' in 'field list' in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:30
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php(30): mysqli->prepare()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 30
+[20-Feb-2025 18:13:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'autonomo' in 'field list' in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:30
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php(30): mysqli->prepare()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 30
+[20-Feb-2025 18:15:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'autonomo' in 'field list' in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:30
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php(30): mysqli->prepare()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 30
+[20-Feb-2025 18:46:23 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin@gmail.com' for key 'usuarios.PRIMARY' in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:40
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php(40): mysqli_stmt->execute()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 40
+[20-Feb-2025 18:58:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin@gmail.com' for key 'usuarios.PRIMARY' in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:41
+Stack trace:
+#0 /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php(41): mysqli_stmt->execute()
+#1 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 41
+[20-Feb-2025 20:51:52 UTC] PHP Warning:  Undefined variable $filas in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 196
+[20-Feb-2025 20:51:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_all() on null in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:196
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 196
+[20-Feb-2025 20:52:25 UTC] PHP Warning:  Undefined variable $conexion in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 8
+[20-Feb-2025 20:52:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php:8
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/DIWEB2425/Nuevo_ECI/Tarea_03-ECI/Tarea03.php on line 8

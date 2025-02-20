@@ -307,10 +307,15 @@ label {
     color: #333;
 }
 
+.alert {
+    color: green;
+}
+
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-    width: 96%;
+input[type="password"],
+input[type="number"] {
+    width: 50%;
     padding: 10px;
     margin-top: 8px;
     margin-bottom: 10px;
