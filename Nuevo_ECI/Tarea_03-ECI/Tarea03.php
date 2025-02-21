@@ -16,9 +16,6 @@ $alerta = "Nº de Registros:" . $numFilas;
 $alerta = "Para Autónomos...";
 
 if (isset($_REQUEST['enviar'])) {
-
-
-
     $correo = $_REQUEST['correo'] ?? '';
     $clave = $_REQUEST['clave'] ?? '';
     $nombre = $_REQUEST['nombre'] ?? '';
@@ -63,9 +60,21 @@ if (isset($_REQUEST['enviar'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>El Corte Inglés</title>
     <link rel="stylesheet" type="text/css" href="estilos.css" />
-    <style>
 
+    <style>
+        section table {
+            color: green;
+        }
+
+        table {
+            border: 2px solid green;
+            border-collapse: separate;
+            border-spacing: 10px;
+            empty-cells: hide;
+            background-color: #fdfefe;
+        }
     </style>
+
 </head>
 
 <!--LOGO "EL CORTE INGLES"-->
@@ -246,8 +255,10 @@ if (isset($_REQUEST['enviar'])) {
                         <th>Correo</th>
                         <th>Clave</th>
                         <th>Nombre</th>
-                        <th>Autonomo</th>
+                        <th>Autónomo</th>
                         <th>NIF-CIF</th>
+                        <th>----</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -264,6 +275,15 @@ if (isset($_REQUEST['enviar'])) {
                             <td><?php echo $usuario['nombre']; ?></td>
                             <td><?php echo $usuario['autonomo']; ?></td>
                             <td><?php echo $usuario['nif_cif']; ?></td>
+                            <!--EN CADA FILA PONGO UN BOTÓN ELIMINAR-->
+                        <td>
+                            <form action="#" method="post">
+                                <input type="hidden" name="correo"
+                                    value="<?php echo $usuario['correo']; ?>">
+                                <button type="submit" name="confirmar"
+                                    class="btn btn-outline-danger">Eliminar</button>
+                            </form>
+                        </td>
                         </tr>
                     <?php
                     }
