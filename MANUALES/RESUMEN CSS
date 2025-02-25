@@ -1,0 +1,135 @@
+RESUMEN CSS
+------------------------------------
+1. Selectores
+- * -> Universal
+- <etiqueta> -> Etiqueta (ej: p, h1, span) 
+- .class -> Atributo class (ej: class="rojo")
+- #id -> Atributo id (1 solo por página)
+
+- selector1, selector2 (afecta a 2 selectores distintos)
+- selector1 selector2 (descendientes, ej: p span)
+- selector1 > selector2 (selector2 hijo de selector1, ej: p > span)
+- selector1 + selector2 (selector2 hermano de selector1)
+
+# PSEUDO-CLASES #
+- selector:first-of-type -> Primero de su tipo
+- selector:nth-of-type(n) -> Enésimo hermano de su tipo
+- selector:nth-last-of-type(n) -> Enésimo hermano tipo desde el final
+
+- selector:first-child  -> Primer hermano
+- selector:nth-child(n) -> Enésimo hermano 
+
+- selector:link -> No visitado
+- selector:visited -> Visitado
+- selector:hover -> Pasa el cursor por encima
+- selector:focus -> Está dentro del elemento (ej: input)
+- selector:active -> Clic en el elemento
+
+
+# PSEUDO-ELEMENTOS #
+- ::first-line -> Primera línea
+- ::first-letter -> Letra capital
+- ::before -> Añade contenido al principio
+
+2. Medidas y Colores
+- Absolutas: cm, mm, in (pulgadas), pt, pc
+- Relativas: px, em, ex, % (porcentaje)
+- #RGB (Rojo, Verde, Azul)
+    - Rojo #F00     - Amarillo #FF0     - Gris Claro  #CCC
+    - Verde #0F0    - Cyan #0FF         - Gris Oscuro #666
+    - Azul #00F     - Magenta #F0F      - Blanco #FFF, Negro #000
+    - RGB (Hexadecimal, 0-F)
+    - Porcentaje (0-100, 0-100, 0-100)
+    - Decimal (0-255, 0-255, 0-255)
+
+3. Color y fondo (Propiedades) (8)
+- color -> color de la fuenta
+- background-color -> Color de fondo
+- background-image -> Imagen de fondo (url)
+- background-repeat -> Repetición del fondo 
+- background-attachment -> Fijación del fondo (scroll|fixed)
+- background-position -> Posición del fondo
+- background-size -> Tamaño del fondo 
+- opacity -> Opacidad del elemento
+
+4. Texto (8)
+- text-indent -> Sangría de primera línea
+- text-align -> Alineación del texto
+- text-decoration -> Subrayado, Sobrerayado, tachado
+- letter-spacing -> Espacio entre letras
+- word-spacing -> Espacio entre palabras
+- text-transform -> Mayúsculas iniciales, Mayúsculas, Minúsculas
+- line-height -> Interlineado
+- vertical-align -> Alineación vertical
+
+5. Fuentes (7)
+- @font-face -> Agregar fuente
+- font-family -> La fuente
+- font-style -> Cursiva
+- font-variant -> Versalitas
+- font-weight -> Grosor de fuente 
+- font-size -> Tamaño fuente
+- font-stretch -> Separación de fuentes
+
+6. Listas (4)
+- list-style-type -> Tipo de viñeta/numeración
+- list-style-imagen -> Imagen de viñeta
+- list-style-position -> Posición viñeta/numeración
+- list-style -> Genérico 
+
+7. Tablas (4)
+- caption-side -> Posición del titulo
+- border-collapse -> Celdas juntas/separadas
+- border-spacing -> Espaciado entre celdas
+- empty-cells -> Celdas vacias visibles/no
+
+8. Cajas (24)
+- padding -> Relleno (top, right, bottom, left)
+- margin -> Margen (top, right, bottom, left)
+- border-width -> Grosor de borde (top, right, bottom, left)
+- border-color -> Color de borde (top, right, bottom, left)
+- border-style -> Estilo de borde (dashed, dotted, solid, etc)
+- border-radius -> Radio de borde
+- width -> Ancho (min/max)
+- height -> Alto (min/max)
+
+9. Posicionamiento (8)
+- display -> Bloque/Línea (none -> Quita el elemento)
+- position -> Posición general (static | relative | absolute | fixed)
+- top right bottom left -> Desplazamiento sup, dcho, inf o izq
+- float -> Cajas flotantes (left | right)
+- clear -> Nada alrededor ( left | right | both)
+- z-index -> Capas
+- visibility -> (hidden) Ocultar elemento
+- overflow -> Desbordamiento de la caja
+
+10. Sombras y cursores (3)
+- text-shadow -> Sombra de texto
+- box-shadow -> Sombra de caja
+- cursor -> forma del cursor (pointer, help, move)
+
+11. Gradientes y transiciones (10)
+- background: linear-gradient -> Gradiente lineal
+- background: radial-gradient -> Gradiente radial
+- transform: scale -> Escalar
+- transform: translate -> Mover
+- transform: rotate -> Girar
+- transform: skew -> Distorsion Trapezoidal 
+- animation-name -> Nombrar la animación
+- animation-duration -> Duración
+- animation-timing-function -> Acelerar (lineal, ease, ease-in, ease-out)
+- animation-delay -> Retardo animación
+
+12. Filtros y columnas (12)
+- filter: blur() -> Desenfoque
+- filter: brightness() -> Oscurecer|Iluminar
+- filter: contrast() -> Contraste
+- filter: grayscale() -> Escala de grises
+- filter: opacity() -> Opacidad
+- filter: saturate() -> Saturación
+- filter: sepia() -> Color sepia
+- column-count -> Número columnas (uniformes)
+- column-width -> Ancho columnas (Incompatible con el column-count)
+- column-rule -> Rayas entre columnas
+- column-gap -> Espaciado entre columnas
+- column-span -> Inicio nueva columna

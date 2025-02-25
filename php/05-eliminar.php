@@ -154,7 +154,7 @@ $alerta .= "Nº de Registros:" . $numFilas;
             <input type="hidden" name="Referencia"
                 value="<?php echo $_REQUEST['Referencia']; ?>">
             <button type="submit" name="eliminar"
-                class="btn btn-outline-danger">Sí</button>
+                class="btn btn-outline-danger">Sí</button>e
             <button type="submit" name="volver"
                 class="btn btn-outline-success">No</button>
         </form>
