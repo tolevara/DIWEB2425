@@ -44,15 +44,22 @@ if (isset($_REQUEST['enviar'])) {
     $suma += $matriz[$fila][$columna];
     }
 
-
     SOLUCION JESUS:
     $suma = 0;
     for ($fila=0, $columna=1; $fila < $longitud; $fila+=2, $columna+=2)
     $coordenadaX = $coordenadas[$fila];
     $coordenadaY = $coordenadas[$fila];
-    $suma += $matriz[$coordenadasX] [$coordenadaY];*/
+    $suma += $matriz[$coordenadasX] [$coordenadaY];
 
-    
+    $suma = 0;
+    for ($i = 0; $i < $longitud; $i += 2) {
+        $suma += $matriz[$coordenadas[$i]] [$coordenadas^[$i+1]];
+    }
+                                                 // *LOS PARES SON LA X, Y LOS IMPARES EL Y*   
+    foreach ($coordenadas as $indice => $valor) { ->(RECORRE EL ARRAY ENTERO, EL SOLO SE ENCARGA DE LA LONGITUD)
+        if ($indice % 2 == 0)                       
+        $suma += $matriz[$coordenadas[$indice]] [$coordenadas[$indice + 1]]; 
+    }*/
 }
 
 ?>
