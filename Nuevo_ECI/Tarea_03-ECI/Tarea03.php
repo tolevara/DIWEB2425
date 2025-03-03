@@ -49,7 +49,21 @@ if (isset($_REQUEST['enviar'])) {
     } else {
         $alerta = "<br> ERROR FATAL (EXPLOTA!!)";
     }
-    
+}
+// Eliminar usuario cuando se presiona el botón Eliminar
+if (isset($_POST['confirmar']) && isset($_POST['correo'])) {
+    $correoEliminar = $_POST['correo'];
+
+    $eliminarSQL = "DELETE FROM usuarios WHERE correo = ?";
+    $sentenciaEliminar = $conexion->prepare($eliminarSQL);
+    $sentenciaEliminar->bind_param("s", $correoEliminar);
+    $ejecutaEliminar = $sentenciaEliminar->execute();
+
+    if ($ejecutaEliminar) {
+        $alerta = "Usuario eliminado con éxito.";
+    } else {
+        $alerta = "Error al eliminar el usuario.";
+    }
 }
 ?>
 
@@ -191,8 +205,6 @@ if (isset($_REQUEST['enviar'])) {
         </ul>
     </section>
 
-
-
     <!--FOOTER + FORMULARIO= CAMPO DE CORREO ELECTRÓNICO-->
     <footer>
         <section>
@@ -223,7 +235,6 @@ if (isset($_REQUEST['enviar'])) {
 
 
                 <fieldset>
-
                     <legend>Autónomo:</legend> <!--AQUÍ EMPIEZA LA PARTE DE AUTÓMO-->
                     <nav class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="autonomo" id="si" value="1">
@@ -249,8 +260,8 @@ if (isset($_REQUEST['enviar'])) {
 
         <!--EN EL class DEFINO booststrap-->
         <section class="container aling-center m-e w-70 bg-primary"> <!--bg = (COLORES)-->
-            <!-- La tabla aparece siempre -->
-            <table class="table">
+            
+            <table class="table">  <!-- La tabla aparece siempre -->
                 <thead>
                     <tr>
                         <th>Correo</th>
@@ -258,10 +269,9 @@ if (isset($_REQUEST['enviar'])) {
                         <th>Nombre</th>
                         <th>Autónomo</th>
                         <th>NIF-CIF</th>
-                        <th>----</th>
-                        
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php
                     //ASOCIO LA SALIDA A SU CAMPO
@@ -277,24 +287,22 @@ if (isset($_REQUEST['enviar'])) {
                             <td><?php echo $usuario['autonomo']; ?></td>
                             <td><?php echo $usuario['nif_cif']; ?></td>
                             <!--EN CADA FILA PONGO UN BOTÓN ELIMINAR-->
-                        <td>
-                            <form action="#" method="post">
-                                <input type="hidden" name="correo"
-                                    value="<?php echo $usuario['correo']; ?>">
-                                <button type="submit" name="confirmar"
-                                    class="btn btn-outline-danger">Eliminar</button>
-                            </form>
-                        </td>
+                            <td>
+                                <form action="#" method="post">
+                                    <input type="hidden" name="correo"
+                                        value="<?php echo $usuario['correo']; ?>">
+                                    <button type="submit" name="confirmar"
+                                        class="btn btn-outline-danger">Eliminar</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php
                     }
                     ?>
+
                 </tbody>
             </table>
-
         </section>
-
     </footer>
 </body>
-
 </html>
