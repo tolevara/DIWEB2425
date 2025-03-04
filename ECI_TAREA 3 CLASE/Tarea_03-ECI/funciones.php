@@ -11,10 +11,8 @@ function conectar()  // SE PUEDE USAR LA OPCION A ó B
     $usuario = "root";
     $clave = "root";
 
-
     //A) FORMATO PROCEDIMENTAL
     // $conexion = mysqli_connect($servidor, $usuario, $clave);
-
 
     //B) FORMATO POO (PROGRAMACION ORIENTADA A OBJETOS)
     //$conexion = new -> ES EL CONTRUCTOR PARA CREAR OBJETOS
@@ -39,7 +37,6 @@ function conectarBBDD() //SE PUEDE USAR LA OPCION A ó B
     //A) FORMATO PROCEDIMENTAL
     // $conexion = mysqli_connect($servidor, $usuario, $clave, $bbdd);
 
-
     //B) FORMATO POO (PROGRAMACION ORIENTADA A OBJETOS)
     //$conexion = new -> ES EL CONTRUCTOR PARA CREAR OBJETOS
     $conexion = new mysqli($servidor, $usuario, $clave, $bbdd);
@@ -47,7 +44,7 @@ function conectarBBDD() //SE PUEDE USAR LA OPCION A ó B
     if ($conexion->connect_error) {
         die("error!," . $conexion->connect_errno);
     } else {
-        echo " LA CONEXION ES CORRECTA";
+        //echo " LA CONEXION ES CORRECTA";
         return $conexion;
     }
 }

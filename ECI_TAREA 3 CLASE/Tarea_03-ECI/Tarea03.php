@@ -28,6 +28,18 @@ if (isset($_REQUEST['enviar'])) {
         autonomo: $autonomo
         nif_cif: $nif_cif";
 
+    //VERIFICA SI EL CORREO YA EXISTE//
+    $consultaCorreo = "SELECT * FROM usuarios WHERE correo = ?";
+    $sentenciaCorreo = $conexion->prepare($consultaCorreo);
+    $sentenciaCorreo->bind_param("s", $correo);
+    $sentenciaCorreo->execute();
+    $resultado = $sentenciaCorreo->get_result();
+
+    if ($resultado->num_rows > 0) {
+        $alerta = "El correo $correo ya está registrado.";
+    } 
+    else {
+   
     // Preparar la sentencia (SEGUNDO PASO)
     $sentenciaSQL = "INSERT INTO usuarios (correo, clave, nombre, autonomo, nif_cif) 
     VALUES (?,?,?,?,?)";
@@ -45,10 +57,13 @@ if (isset($_REQUEST['enviar'])) {
 
     $ejecutaSQL = $sentenciaPreparada->execute(); //booleano//
     if ($ejecutaSQL) {
-        $alerta = "<br> autonomo";
+        $alerta = "<br> Autónomo";
     } else {
         $alerta = "<br> ERROR FATAL (EXPLOTA!!)";
     }
+}
+
+    
 }
 // Eliminar usuario cuando se presiona el botón Eliminar
 if (isset($_POST['confirmar']) && isset($_POST['correo'])) {
