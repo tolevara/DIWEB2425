@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Funciones</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="all.min.css">
+</head>
+<body>
+    <section>
+        <section class="m-3 p-3 w-50 bg-primary"> <!--PONEMOS pre PARA QUE PINTE TIPO BLOQUE-->
+            <pre class="alert alert-succesos"><?php echo $mensaje; ?></p> <!--ESTO PERTENECE AL ALERT DE ARRIBA-->
+        </section>  
+        
+        <section class="m-3 p-3 w-50 bg-secondary text-white">
+            <form action="#" method="post">
+                <nav class="d-flex mb-3">
+                <label for="texto" class="w-50">Titular</label>
+                <input type="text" name="texto" id="texto" class="w-50">
+                </nav>
+    
+                <nav class="d-flex mb-3">
+                <label for="entero" class="w-50">Num Cuenta</label>
+                <input type="number" name="entero" id="entero" class="w-50">
+                </nav>
+    
+                <nav class="d-flex mb-3">
+                <label for="decimal" class="w-50">Saldo</label>
+                <input type="number" name="decimal" id="decimal" step="0.1" class="w-50">
+                </nav>
+    
+                <hr class="m-3 p-1 bg-danger">
+                <p>¿Está activa?</p>
+                <nav class="form-check">   <!--PRIMERO VA LA BOLITA Y DESPUÉS EL TEXTO-->
+                    <input type="radio" name="booleano" id="1" class="form-check-input" value="1" checked>
+                    <label for="1" class="form-check-label">Sí</label>
+                </nav>
+    
+                <nav class="form-check">   <!--PRIMERO VA LA BOLITA Y DESPUÉS EL TEXTO-->
+                    <input type="radio" name="booleano" id="0" class="form-check-input" value="0">
+                    <label for="0" class="form-check-label">No</label>
+                </nav>
+    
+                <hr class="m-3 p-1 bg-danger">
+               
+                <input type="submit" value="Enviar" name="enviar"><br>
+            </form>
+        </section>
+    </body>
+    </html>
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+

@@ -78,7 +78,9 @@ if (isset($_REQUEST['enviar'])) {
         <p class="alert alert-primary m-3 p-3 w-50">
             <?php echo $mensaje; ?></p>
     </section>
+
     <hr class="m-3 p-1 bg-primary">
+
     <form action="#" method="post" class="form m-3 p-3 w-50">
     <label for="n1" class="form-label">Fila</label>
         <input type="number" name="n1" id="n1" class="form-control" min="1" max="5"><br>
@@ -86,6 +88,6 @@ if (isset($_REQUEST['enviar'])) {
         <input type="number" name="n2" id="n2" class="form-control" min="1" max="4"><br>
         <input type="submit" value="Enviar" class="btn btn-success" name="enviar">
     </form>
-</body>
 
+</body>
 </html>

@@ -1,0 +1,102 @@
+<?php
+require("errores.php");
+// Incluyendo las clases necesarias
+include 'artista.php';
+include 'musico.php';
+include 'director.php';
+include 'orquesta.php';
+include 'ensayo.php';
+include 'iconcierto.php';
+
+// Creamos algunos músicos y directores de orquesta
+$orquesta = new Orquesta("ROSS", 1992);
+$m1 = new Musico("Juan", 30, "Masculino", "Guitarra", $orquesta);
+$m2 = new Musico("Maria", 25, "Femenino", "Batería", $orquesta);
+$m3 = new Musico("Carlos", 40, "Masculino", "Bajo", $orquesta);
+$m4 = new Musico("Laura", 28, "Femenino", "Violín", $orquesta);
+$m5 = new Musico("Pedro", 35, "Masculino", "Piano", $orquesta);
+
+$d1 = new Director("Luis", 45, "Masculino", 20);
+$d2 = new Director("Ana", 50, "Femenino", 25);
+
+// Crear un array con los músicos y directores
+$personas = [$m1, $m2, $m3, $m4, $m5, $d1, $d2];
+
+// Ver si se envió el formulario y procesamos los datos
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nombre = $_POST['nombre'];
+    $edad = $_POST['edad'];
+    $genero = $_POST['genero'];
+
+    // Creamos un nuevo Artista basado en los datos proporcionados
+    $nuevoMusico = new Musico($nombre, $edad, $genero, "Instrumento Genérico", $orquesta);
+    $personas[] = $nuevoMusico;
+
+    // Mostrar el JSON con los datos nuevos
+    echo "<h2>Datos del Artista Agregado:</h2>";
+    echo "<pre>" . json_encode($nuevoMusico->toString(), JSON_PRETTY_PRINT) . "</pre>";
+}
+?>
+
+<!-- Formulario HTML para capturar datos -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Tarea_05</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        label,
+        input,
+        select {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="m-3 p-3 w-50 bg-primary"> <!--PONEMOS pre PARA QUE PINTE TIPO BLOQUE-->
+        <pre class="alert alert-succesos"><?php echo $mensaje; ?></p> <!--ESTO PERTENECE AL ALERT DE ARRIBA-->
+    </section>
+
+    <section class="m-3 p-3 w-50 bg-secondary text-white">
+        <form action="#" method="post">
+            <nav class="d-flex mb-3">
+                <label for="texto" class="w-50">Nombre:</label>
+                <input type="text" name="texto" id="texto" class="w-50"><br>
+            </nav>
+
+            <nav class="d-flex mb-3">
+                <label for="entero">Edad:</label>
+                <input type="number" name="entero" id="entero" class="w-50"><br>
+            </nav>
+
+            <select id="genero" name="genero" required>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+            </select><br>
+
+            <hr class="m-3 p-1 bg-danger">
+
+            <input type="submit" value="Enviar" name="enviar"><br>
+        </form>
+
+        <h2>Lista de Artistas y Directores:</h2>
+        <pre><?php echo json_encode($personas, JSON_PRETTY_PRINT); ?></pre>
+
+    </section>
+</body>
+
+</html>

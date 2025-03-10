@@ -101,7 +101,7 @@ class TrenCarretera extends Camion
         $miJSON['Motor'] =json_decode( $this->motorTren);
         return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE); //DEVUELVO JSON//
     }
-    
+
 #CREAMOS UN MÉTODO ESTÁTICO (static)#
 public static function leeTren( 
     string $modelo, int $potencia, float $precio, bool $electrico, bool $remolque2 
@@ -153,14 +153,14 @@ if (isset($_REQUEST['enviar'])) {
     $mensaje .= "<br> Modelo TrenX: " . $miTrenX->modelo; 
 
 #VAMOS A CREARNOS UNA FLOTA DE TRENES DE CARRETERA#
-    $flota = TrenCarretera::crearFlota("Volvo FH Electric", $potencia, $potencia, 450000.95, 5);
+    $flota = TrenCarretera::crearFlota("Volvo FH Electric", $potencia, 450000.95, 5);
     $mensaje .= "<br> Nº Trenes:" . TrenCarretera::$numTrenes;
     $mensaje .= "<br> : Esta es tu Flota $flota";
 }
 
 ?>
 <!DOCTYPE html> <!--ESTO PERTENECE AL HTML-->
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">

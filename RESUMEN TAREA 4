@@ -1,0 +1,96 @@
+<?php
+// Conexión a la base de datos (Si se desea utilizar, por ahora no se necesita)
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'banco';
+
+$conn = new mysqli($host, $user, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Función para calcular los primeros 20 números primos
+function primo() {
+    $primos = [];
+    $contador = 2;
+    while(count($primos) < 20) {
+        if(esPrimo($contador)) {
+            $primos[] = $contador;
+        }
+        $contador++;
+    }
+    return $primos;
+}
+
+// Función para verificar si un número es primo
+function esPrimo($numero) {
+    if ($numero <= 1) return false;
+    for ($i = 2; $i <= sqrt($numero); $i++) {
+        if ($numero % $i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Clase CuentaBancaria con atributos y métodos según el diagrama
+class CuentaBancaria {
+    private $titular;
+    private $numCuenta;
+    private $saldo;
+    private $activa;
+
+    // Constructor
+    public function __construct($titular, $numCuenta, $saldo, $activa) {
+        $this->titular = $titular;
+        $this->numCuenta = $numCuenta;
+        $this->saldo = $saldo;
+        $this->activa = $activa;
+    }
+
+    // Método estático que devuelve una nueva cuenta bancaria
+    public static function leerDatos($titular, $numCuenta, $saldo, $activa) {
+        return new CuentaBancaria($titular, $numCuenta, $saldo, $activa);
+    }
+
+    // Método que devuelve los datos de la cuenta en formato JSON
+    public function imprimeCuenta() {
+        return [
+            'titular' => $this->titular,
+            'numCuenta' => $this->numCuenta,
+            'saldo' => $this->saldo,
+            'activa' => $this->activa
+        ];
+    }
+}
+
+// Acción basada en la solicitud
+if(isset($_GET['accion'])) {
+    $accion = $_GET['accion'];
+
+    // Caso para obtener los 20 primeros números primos
+    if ($accion === 'primos') {
+        echo json_encode(primo());
+    }
+
+    // Caso para crear una nueva cuenta bancaria
+    elseif ($accion === 'altaCuenta') {
+        $titular = $_GET['titular'];
+        $numCuenta = $_GET['numCuenta'];
+        $saldo = $_GET['saldo'];
+        $activa = $_GET['activa'] === 'sí' ? true : false;
+
+        // Llamada a la función estática leerDatos para crear la cuenta bancaria
+        $cuenta = CuentaBancaria::leerDatos($titular, $numCuenta, $saldo, $activa);
+
+        // Devolver los datos de la cuenta como JSON
+        echo json_encode($cuenta->imprimeCuenta());
+    }
+}
+
+// Cerrar conexión con la base de datos (si fuera necesario)
+// $conn->close();
+?>
+

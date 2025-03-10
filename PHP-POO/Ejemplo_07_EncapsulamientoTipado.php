@@ -65,7 +65,7 @@ if (isset($_REQUEST['enviar'])) {
 }
 ?>
 <!DOCTYPE html> <!--ESTO PERTENECE AL HTML-->
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
