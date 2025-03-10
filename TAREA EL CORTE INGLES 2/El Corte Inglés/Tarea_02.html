@@ -1,0 +1,143 @@
+<!--Tarea_02.html-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!--LOGO CABECERA-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Corte Inglés</title>
+    <a href="https://www.elcorteingles.es/">
+        <img src="Img/Logo.png" width="200" alt="logo el corte"></a>
+
+    <style>
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            margin: 50px;
+        }
+
+        footer ul li img {
+            margin-bottom: 5px;
+
+        }
+
+        footer ul li {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 8px;
+            width: 20%;
+        }
+
+        footer ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        footer ul li span {
+            color: green;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <section aria-label="formulario">
+            <form action="grabaform.php" method="get">
+                <label for="buscador">¿Qué estas buscando?</label><br>
+                <input type="text" name="buscador" id="buscador" value="">
+
+                <label for="boton"></label>
+                <input type="submit" name="boton" id="boton" value="buscar" style="background-color: olivedrab;">
+            </form>
+        </section>
+        <aside aria-label="iconos">
+
+            <img src="Img/Usuario.png" width="20" alt="usuario">
+            <img src="Img/Corazon2.png" width="20" alt="corazon2">
+            <img src="Img/Cesta.png" width="20" alt="cesta"></a>
+
+        </aside>
+
+        <!--Lista después de la cabecera-->
+        <section>
+            <ul>
+                <li><a href="https://www.elcorteingles.es/moda-mujer/?stype=search_redirect" style="color:black;">Moda
+                        Mujer</a>
+                </li>
+                <li><a href="https://https://www.elcorteingles.es/deportes/" style="color: black;">Deporte</a></li>
+                <li><a href="https://https://www.elcorteingles.es/electronica/" style="color: black;">Electrónica</a>
+                </li>
+                <li><a href="https://www.elcorteingles.es/hogar/" style="color: black;">Hogar</a></li>
+                <li><a href="https://www.elcorteingles.es/supermercado/?utm_source=eci&utm_medium=home&utm_campaign=botones"
+                        style="color: black;">Supermercado</a></li>
+
+            </ul>
+        </section>
+
+    </header>
+    <section>
+        <!--h3-->
+        <h3>Categoria</h3><br>
+
+        <!--Tabla de Imágenes,pie de Imágenes,-->
+
+        <table>
+            <thead>
+                <tr>
+                    <td><a href="https://www.elcorteingles.es/moda-mujer/"><img src="Img/Mujer.png" alt="mujer"
+                                width="100"></a></td>
+                    <td><a href="https://www.elcorteingles.es/moda-hombre/"><img src="Img/Hombre.png" alt="hombre"
+                                width="100"></a></td>
+                    <td><a href="https://www.elcorteingles.es/moda-infantil/"> <img src="Img/Niña.png" alt="niña"
+                                width="100"></a></td>
+                    <td><a href="https://www.elcorteingles.es/hogar/"><img src="Img/Hogar.png" alt="cama"
+                                width="100"></a></td>
+                    <td><a href="https://www.elcorteingles.es/deportes/"><img src="Img/Deporte.png" alt="deporte"
+                                width="100"></a></td>
+                    <td><a href="https://www.elcorteingles.es/electronica/"><img src="Img/Elétronica.png"
+                                alt="electrónica" width="100"></a></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>moda mujer</td>
+                    <td>moda hombre</td>
+                    <td>moda infantil</td>
+                    <td>hogar</td>
+                    <td>deporte</td>
+                    <td>electronica</td>
+                </tr>
+            </tbody>
+        </table>
+        <footer>
+
+
+            <ul>
+                <li><img src="Img/Recogida.jpeg" width="25" height="25" alt="recodida"> <a href="#">Recogida en tienda
+                        <span>gratis</span></a></li>
+                <li><img src="Img/Envío.jpeg" width="25" height="25" alt="envio"><a href="#">Envío a domicilio
+                        <span></span></a></li>Elemento4
+                <li><img src="Img/Devolución.jpeg" width="25" height="25" alt="devolucion"> <a href="#">Devolución en
+                        tienda
+                        <span>gratis</span></a></li>
+                <li><img src="Img/Click&Clar.jpeg" width="25" height="25" alt="click-car"> <a href="#">Click&Car
+                        <span></span></a></li>
+
+            </ul>
+        </footer>
+
+
+</body>
+
+</html>

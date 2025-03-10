@@ -1,0 +1,24 @@
+                             ----------------LIBRE OFFICE--------------------
+
+
+sudo add-apt-repository ppa:libreoffice
+sudo apt update
+sudo apt install libreoffice
+# Idioma español
+sudo apt install libreoffice-l10n-es
+# Diccionarios
+sudo apt-cache search myspell
+sudo apt-get install myspell-es
+
+
+
+
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:libreoffice
+sudo apt update
+sudo apt install libreoffice
+# Idioma español
+sudo apt install libreoffice-l10n-es
+# Diccionarios
+sudo apt-cache search myspell
+sudo apt-get install myspell-es
