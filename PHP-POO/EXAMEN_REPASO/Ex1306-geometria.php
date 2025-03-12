@@ -29,7 +29,7 @@ if (isset($_REQUEST['elegir'])) {  #<-SI SE ENVIA EL FORMULARIO ENTONCES HACEMOS
     }
 }
 
-class Geometria
+class Geometria  //PADRE//
 {
     public int $base = 0;
     public int $altura = 0;
@@ -49,7 +49,7 @@ class Geometria
     }
 }
 
-class Triangulo extends Geometria {
+class Triangulo extends Geometria {  //HIJAS//
     public string $color; #<- ATRIBUTO PROPIO DEL HIJO#
 
     public function __construct(int $base, int $altura, string $color)
@@ -71,11 +71,41 @@ class Triangulo extends Geometria {
     }
 }
 
+class Rectangulo extends Geometria {   //HIJAS//
+    public string $color; #<- ATRIBUTO PROPIO DEL HIJO#
+
+    public function __construct(int $base, int $altura, string $textura)
+    {
+        parent::__construct($base, $altura);
+        $this->color = $textura;
+    }
+
+    public function __toString(): string
+    {
+        $miJson = json_decode(parent::__toString(), true);
+        $miJson['Textura Rectángulo'] = $this->color;
+        return json_encode($miJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    public function area() : string {
+        return "El área del rectángulo es:" . ($this->base * $this->altura);
+        
+    }
+}
+
+
+
 
 
 
 //SCRIPT PRINCIPAL//
-if (isset($_REQUEST['solucion'])) {
+if (isset($_REQUEST['solucion'])) {  //CREAMOS DOS OBJETOS//
+    $triangulo1 = new Triangulo(10,5,"Rojo");
+    $rectangulo1 = new Rectangulo(10,5,"Felpa");
+    $mensaje .= "<br> Triángulo <br>" . $triangulo1;
+    $mensaje .= "<br>" . $triangulo1->area();
+    $mensaje .= "<br> Rectángulo <br>" . $rectangulo1;
+    $mensaje .= "<br>" . $rectangulo1->area();
 
 }
 
