@@ -1,0 +1,763 @@
+<?php 
+require ("errores.php");
+
+
+
+
+interface iConcierto{
+
+    public static function tocar() : string ;
+    public static function dirigirOrquesta() : string;
+}
+
+
+trait Ensayo{
+
+    public static function ensayar(){
+        return "Estoy ensayando";
+
+    }
+
+}
+
+abstract class Artista{
+    public string $nombre="";
+    protected int $edad=0;
+    public bool $genero;
+
+    public function __construct( string $nombre, int $edad, bool $genero=true ){
+
+        $this->nombre=$nombre;
+        $this->setEdad($edad);
+        $this->genero=$genero;
+
+    }
+
+    public function setEdad(int $edad): void{
+        if($edad > 0){
+            $this->edad =$edad;
+        }
+    }
+    
+    
+    public function getEdad (int $edad): int {
+          return $this->edad=$edad;
+    }
+
+
+
+    abstract public function __toString():string;
+    
+
+    }
+
+
+    class Orquesta{
+        public string $denominacion;
+        public int $fundacion;
+
+
+        public function __construct( string $denominacion, int $fundacion ){
+
+            $this->denominacion=$denominacion;
+            
+            $this->fundacion=$fundacion;
+
+
+
+    }
+    public function __toString(): string
+    {  
+        return json_encode(['Nombre de la orquesta:' => $this->denominacion,  'Fundación de la orquesta:' => $this->fundacion
+        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+
+
+
+}
+
+
+    class Musico extends Artista implements iConcierto{
+
+
+        public string $instrumento="";
+        public Orquesta $orquesta;
+        
+
+        public static function tocar(): string{
+
+            return "Toco mi instrumento";
+        }
+
+        public static function dirigirOrquesta(): string
+        {
+            return "";
+        }
+       
+
+        public function __construct( string $nombre, int $edad, bool $genero, string $instrumento)
+        {
+            
+            parent::__construct($nombre,$edad,$genero);
+            $this -> instrumento=$instrumento;
+            $this->orquesta=new Orquesta("ROSS",1992);
+          
+
+
+
+        }
+        use Ensayo;
+
+
+        public static function creaMusico(string $nombre, int $edad, bool $genero, string $instrumento): string{
+
+          
+         
+            $grupoMusicos=[];
+            for ($i=0; $i<5; $i++){
+              $elInstrumento=["Violin", "Piano", "Guitarra", "Bombo", "Chelo", "Clarinete", "Oboe","Arpa"];
+              $instrumento=$elInstrumento[rand(0, 7)];
+                $nuevoMusico=new Musico($nombre, $edad,  $genero, $instrumento);
+                $grupoMusicos[]=$nuevoMusico;
+        }
+            $losmusicos="";
+            foreach($grupoMusicos as $num=>$elmusico){
+                $losmusicos.="Musico nº:".($num+1).$elmusico;
+            }
+            return $losmusicos;
+        }
+
+
+        public function __toString(): string
+    {
+    
+    $miJSON=['Nombre' => $this->nombre,  'Edad' => $this->edad, 'Genero' => $this->genero? "Hombre" : "Mujer" , 'Instrumento'=>$this->instrumento ];
+    $miJSON['¿Que función tengo en la orquesta?']=Musico::tocar();
+    $miJSON["Y ahora, ¿qué estoy haciendo?"]=Musico::ensayar();
+
+    $miJSON['Orquesta']=json_decode ($this->orquesta);
+    
+
+    
+
+    return  json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+
+
+    }
+        
+
+
+    class Director extends Artista implements iConcierto{
+
+
+        private int $experiencia;
+        public Orquesta $orquesta;
+        public string $directorhace;
+        public string $musicohace;
+        
+        
+        public static function tocar(): string{
+
+            return "";
+        }
+
+        public static function dirigirOrquesta(): string
+        {
+            return "Dirijo orquestas";
+        }
+       
+
+
+        public function __construct( string $nombre, int $edad, bool $genero, int $experiencia)
+        {
+            
+            parent::__construct($nombre,$edad,$genero);
+            $this->orquesta=new Orquesta("ROSS",1992);
+            $this -> setExperiencia($experiencia);
+            
+
+
+
+        }
+        
+       
+        public function setExperiencia(int $experiencia): void{
+            if($experiencia > 0){
+                $this->experiencia =$experiencia;
+            }
+        }
+        
+        
+        public function getExperiencia (int $experiencia): int {
+              return $this->experiencia=$experiencia;
+        }
+
+
+        public static function creaDirector(string $nombre, int $edad, bool $genero, int $experiencia): string{
+            
+            $grupoDirectores=[];
+            for ($i=0; $i<2; $i++){
+                $experiencia=rand(1, 20);
+                $nuevoDirector=new Director($nombre, $edad,  $genero, $experiencia);
+                $grupoDirectores[]=$nuevoDirector;
+        }
+            $losdirectores="";
+            foreach($grupoDirectores as $num=>$eldirector){
+                $losdirectores.="Director nº:".($num+1).$eldirector;
+            }
+            return $losdirectores;
+        }
+
+        public function __toString(): string
+    {
+    
+    $miJSON=['Nombre' => $this->nombre,  'Edad' => $this->edad, 'Genero' => $this->genero? "Hombre" : "Mujer" , 'Experiencia'=>$this->experiencia];
+    $miJSON['¿que hago?']=Director::dirigirOrquesta();
+    $miJSON['Orquesta']=json_decode ($this->orquesta);
+    
+    
+
+    return  json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+
+
+
+    }
+    class Director2 extends Artista implements iConcierto{
+
+
+      private int $experiencia;
+      public Orquesta $orquesta;
+      public string $directorhace;
+      public string $musicohace;
+      
+      
+      public static function tocar(): string{
+
+          return "";
+      }
+
+      public static function dirigirOrquesta(): string
+      {
+          return "Dirijo orquestas";
+      }
+     
+
+
+      public function __construct( string $nombre, int $edad, bool $genero, int $experiencia)
+      {
+          
+          parent::__construct($nombre,$edad,$genero);
+          $this->orquesta=new Orquesta("ROSS",1992);
+          $this -> setExperiencia($experiencia);
+          
+
+
+
+      }
+      
+     
+      public function setExperiencia(int $experiencia): void{
+          if($experiencia > 0){
+              $this->experiencia =$experiencia;
+          }
+      }
+      
+      
+      public function getExperiencia (int $experiencia): int {
+            return $this->experiencia=$experiencia;
+      }
+
+
+      public static function creaDirector(string $nombre, int $edad, bool $genero, int $experiencia) {
+
+          
+          
+          
+              $nuevoDirector=new Director2($nombre, $edad,  $genero, $experiencia);
+             
+
+              
+              
+            return $nuevoDirector;
+          
+          
+      }
+
+      public function __toString(): string
+  {
+  
+  $miJSON=['Nombre' => $this->nombre,  'Edad' => $this->edad, 'Genero' => $this->genero? "Hombre" : "Mujer" , 'Experiencia'=>$this->experiencia];
+  $miJSON['¿que hago?']=Director::dirigirOrquesta();
+  $miJSON['Orquesta']=json_decode ($this->orquesta);
+  
+  
+
+  return  json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+  }
+
+
+
+
+  }
+
+
+
+    //funcion principal
+
+    $mensaje1="Los datos de los Objetos:";
+
+    if(isset($_REQUEST['enviar'])){
+        $nombre=$_REQUEST['nombre'];
+        $edad=$_REQUEST['edad'];
+        $genero=$_REQUEST['booleano'];
+        
+        
+        $mimusico = Musico::creaMusico($nombre, $edad, $genero, "instrumento aleatorio");
+        $mensaje1 = "<br> Mis músicos: <br>". $mimusico;
+        
+        
+        
+        
+        $midirector= Director::creaDirector($nombre, $edad, $genero, 0);
+
+        $midirector2= Director2::creaDirector($nombre, $edad, $genero, 45);
+        $mensaje1 .= "<br> Mis directores: <br>". $midirector;
+        
+    
+        $data=json_decode($midirector2,true);
+       
+        
+        
+    }
+    
+
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+   
+
+    <title>Tarea 5</title>
+<style>
+   
+
+
+
+body{
+  background:rgb(247, 183, 131);
+}
+
+.text-container {
+  margin:-100px;
+  text-align: center;
+}
+
+.text-container h2 {
+  font-family:'Arial Narrow';
+  font-size: 8em;
+  font-weight:bolder;
+  text-transform: uppercase;
+}
+
+.text-container .text-gradient {  
+  color: transparent;
+  background-image: linear-gradient(to left, #FFD700, #7B68EE, #3498db, #2ecc71, #FFD700);
+  
+    background-clip: text;
+  animation: color 3s linear infinite; 
+  background-size: 500%;  
+   
+}
+
+  
+
+@keyframes color {
+  from { 
+    background-position: 0% 50%;
+  }
+  to { 
+    background-position: 100% 50%; 
+  }
+}
+
+
+
+.explicacion{
+  position: absolute;
+  top:-540px;
+  
+ 
+  margin:10px;
+  color:darkblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:xx-large;
+  font-weight: bolder;
+}
+
+span{
+  color:brown;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:smaller;
+  font-weight: bolder;
+}
+
+.linea{
+  
+  height: 5px;
+  border-radius: 3px;
+  border:3px solid black;
+  width: 90%;
+
+}
+
+
+.enviar{
+  color: black;
+  font-weight: bolder;
+  border: 2px solid rgb(7, 37, 33);
+  border-radius: 5px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 rgb(7, 37, 33);
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  margin: auto;
+    display: flex; 
+    
+    align-items: center;
+  
+}
+
+.enviar:hover{
+  box-shadow: inset 0 0 0 50px rgb(7, 37, 33);
+  color: white;
+}
+
+.pre{
+  font-size:small;
+  color: darkblue;
+    background: rgb(212, 243, 239);
+    border-radius: 5px;
+    opacity: 0.85;
+    font-family: Arial, Helvetica, sans-serif;  
+    font-weight: bolder;
+   margin: auto;
+   margin-top: 10px;
+   margin-bottom: 10px;
+    display: flex; 
+    
+    align-items: center;
+    width: 35%;
+    
+}
+.formulario{
+  
+  border: solid 3px rgb(15, 51, 46);
+  background: rgb(40, 128, 116);
+    border-radius: 5px;
+    
+    font-family: Arial, Helvetica, sans-serif;  
+    font-weight: bolder;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex; 
+    
+    align-items: center;
+    width: 30%;
+}
+
+.nombre, .edad, .label{
+  position: relative;
+  display:flex;
+  margin:auto;
+  align-items:center;
+
+}
+
+.formulario1{
+  width: 100%;
+}
+
+.tabla{
+  width: 30%;
+  position: relative;
+  top:10px;
+  left:10px
+}
+
+table{
+  width: 100%;
+   border: 2px solid #000;
+   border-radius: 3px;
+   background: rgb(153, 236, 225) url("gradient.gif") bottom left repeat-x;
+}
+
+caption {
+  color: black;
+  font-weight: bold;
+  font-size:large;
+}
+
+th, td {
+  width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-collapse: collapse;
+   padding: 0.3em;
+  }
+
+.circle{
+  position: fixed;
+  border-radius: 50%;
+  background: white;
+  animation: ripple 6s infinite;
+  box-shadow: 0px 0px 10px 0px rgb(94, 0, 0);
+  z-index: -1;
+}
+.square{
+  position: fixed;
+  border-radius: 25%;
+  background: white;
+  animation: ripple 6s infinite;
+  box-shadow: 0px 0px 10px 0px rgb(94, 0, 0);
+  z-index: -1;
+}
+
+.small{
+
+  width: 20vh;
+  height: 20vh;
+  left: -10vh;
+  bottom: -10vh;
+}
+
+.medium{
+   
+  width: 40vh;
+  height: 40vh;
+  left: -20vh;
+  bottom: -20vh;
+}
+
+.large{
+  width: 60vh;
+  height: 60vh;
+  left: -30vh;
+  bottom: -30vh;
+}
+
+.xlarge{
+  width: 80vh;
+  height: 80vh;
+  left: -40vh;
+  bottom: -40vh;
+}
+
+.xxlarge{
+  width: 100vh;
+  height: 100vh;
+  left: -50vh;
+  bottom: -50vh;
+}
+.peque{
+  width: 20vh;
+  height: 20vh;
+  left: 190vh;
+  bottom: 90vh;
+}
+
+.medio{
+  
+  width: 40vh;
+  height: 40vh;
+  left: 180vh;
+  bottom: 80vh;
+}
+
+.largo{
+    
+  width: 60vh;
+  height: 60vh;
+  left: 170vh;
+  bottom: 70vh;
+}
+
+.xlargo{
+    
+  width: 80vh;
+  height: 80vh;
+  left: 160vh;
+  bottom: 60vh;
+}
+
+.xxlargo{
+    
+  width: 85vh;
+  height: 85vh;
+  left: 145vh;
+  bottom: 45vh;
+}
+
+.shade1, .shade6{
+  opacity: 0.2;
+}
+
+.shade2,.shade7{
+  opacity: 0.5;
+}
+
+.shade3,.shade8{
+  opacity: 0.7;
+}
+
+.shade4,.shade9{
+  opacity: 0.8;
+}
+
+.shade5,.shade10{
+  opacity: 0.9;
+}
+
+@keyframes ripple{
+  0%{
+    transform: scale(1.3);
+  }
+  
+  50%{
+    transform: scale(2);
+  }
+  
+  100%{
+    transform: scale(1.3);
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="text-container">
+<h2 class="text-gradient">LA ORQUESTA</h2>
+</div>
+            
+<pre class="pre ">
+            <?php  echo $mensaje1; 
+           
+           
+
+  
+            ?>
+
+</pre>
+
+<section class="tabla">
+<?php 
+
+if(isset($_REQUEST['enviar'])){
+  ?>
+<p class="explicacion">Los instrumentos y la experiencia se generan de forma aleatoria.
+  Los nombres, edad y género son todos iguales (milagro de la clonación humana). <span>( o se generaban de forma aletaoria en el bucle que los crea, o hay que meterlos uno por uno, lo que me daba una pereza...) </span>
+</p>
+
+
+
+<table >
+<caption>Ejemplo JSON presentado en tabla</caption>
+
+    <tr >
+    <?php 
+
+
+        foreach($data as $k => $v) { ?>
+        <th> <?php echo $k; ?> </th>
+       <?php  } 
+       
+      ?>
+       
+    </tr>
+            <tr>
+                <td><?php  echo $data["Nombre"];?></td>
+                <td><?php echo $data["Edad"];?></td>
+                <td><?php echo $data["Genero"];?></td>
+                <td><?php echo $data["Experiencia"];?></td>
+                <td><?php echo $data["¿que hago?"];?></td>
+                <td><?php echo $data["Orquesta"]["Nombre de la orquesta:"];?></td>
+                <td><?php echo $data["Orquesta"]["Fundación de la orquesta:"];?></td>
+            </tr>
+
+</table>
+<?php }?>
+</section>
+
+     
+    <section class="formulario">
+    <form class="formulario1" action="#" method="post">
+        <nav class="nav1">
+        <label for="texto"  class="label">El nombre de todos:</label> 
+        <input  type="text" name="nombre" id="nombre" class="nombre">
+        </nav>
+        <nav class="nav2">
+        <label for="entero"class="label">La edad de todos:</label>
+        <input  type="number" name="edad" id="edad"class="edad">
+        </nav>
+       
+        
+        
+        
+        <hr class="linea" >
+        <p>¿Son hombres o mujeres?</p>
+        <nav class="nav3">
+            <input type="radio" name="booleano" id="1"   value="1" checked >
+            <label for="1" >Hombre</label><br>
+            
+        
+            <input type="radio" name="booleano" id="0" value="0">
+            <label for="0" >Mujer</label>
+            
+        </nav>
+
+        <hr class="linea" >
+        <input class="enviar" type="submit" value="Enviar datos" name="enviar">
+
+
+    </form>  
+    </section>  
+   
+
+<div class='ripple-background'>
+  <div class='circle xxlarge shade1'></div>
+  <div class='circle xlarge shade2'></div>
+  <div class='circle large shade3'></div>
+  <div class='circle medium shade4'></div>
+  <div class='circle small shade5'></div>
+  <div class='square xxlargo shade6'></div>
+  <div class='square xlargo shade7'></div>
+  <div class='square largo shade8'></div>
+  <div class='square medio shade9'></div>
+  <div class='square peque shade10'></div>
+</div>
+
+
+
+    
+</body>
+</html>
