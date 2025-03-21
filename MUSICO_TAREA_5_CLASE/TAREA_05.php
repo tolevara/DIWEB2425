@@ -4,22 +4,6 @@ require("errores.php");
 $mensaje = "Mensajes";
 
 
-// //CREAMOS MÚSICOS Y DIRECTORES DE ORQUESTA//
-// $orquesta = new Orquesta("ROSS", 1992);
-// $m1 = new Musico("Juan", 30, "Masculino", "Guitarra", $orquesta);
-// $m2 = new Musico("Maria", 25, "Femenino", "Batería", $orquesta);
-// $m3 = new Musico("Carlos", 40, "Masculino", "Bajo", $orquesta);
-// $m4 = new Musico("Laura", 28, "Femenino", "Violín", $orquesta);
-// $m5 = new Musico("Pedro", 35, "Masculino", "Piano", $orquesta);
-
-// $d1 = new Director("Luis", 45, "Masculino", 20);
-// $d2 = new Director("Ana", 50, "Femenino", 25);
-
-// //CREAR ARRAY DE  MÚSICOS Y DIRECTORES//
-// $personas = [$m1, $m2, $m3, $m4, $m5, $d1, $d2];
-
-// // CONVERTIR A JSON //
-// echo json_encode($personas, JSON_PRETTY_PRINT);
 
 
 // INTERFAZ //
@@ -34,7 +18,7 @@ trait Ensayo
 {
     public function ensayar(): string
     {
-        return "Estoy ensayando";
+        return "El músico está ensayando";
     }
 }
 
@@ -55,9 +39,9 @@ abstract class Artista
     public function __toString(): string  //ESTO PERTENECE AL PADRE//
     {
         return json_encode([
-            'Nombre' => $this->nombre,
-            'Edad' => $this->edad,
-            'Genero' => $this->genero ? "Masculino" : "Femenino"
+            'nombre' => $this->nombre,
+            'edad' => $this->edad,
+            'genero' => $this->genero ? "Masculino" : "Femenino"
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 }
@@ -65,74 +49,66 @@ abstract class Artista
 // CLASE HIJA //
 class Musico extends Artista implements iConcierto
 {
-    public string $instrumento;
 
-    public function __construct(string $nombre, int $edad, bool $genero, string $instrumento)
-    {
+    public string $instrumento;
+    public Orquesta $orquesta;
+
+    use Ensayo;
+
+    public function __construct(
+        string $nombre,
+        int $edad,
+        bool $genero,
+        string $instrumento
+    ) {
         parent::__construct($nombre, $edad, $genero);
         $this->instrumento = $instrumento;
+        $this->orquesta = new Orquesta("ROSS", 1992);
     }
 
     public function __toString(): string
     {
         $miJSON = json_decode(parent::__toString(), true);
         $miJSON['instrumento'] = $this->instrumento;
+        $miJSON['orquesta'] = $this->orquesta;
         return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
-    public function tocar(): void {
+    public function tocar(): void
+    {
 
-        for ($i=0; $i<5; $i++)
-        $nuevoMusico = new Musico("Juan", 30, "Masculino", "Guitarra", $orqueta)
-
-        
-        $mensaje .= "           <br>";
-       
-    foreach ($nuevoMusico as $indice => $elemento) {
-    $mensaje .= "[$indice] -> $elemento <br>";
-    $elementos[0] = "Coche"; 
+        echo "Tocando el instrumento";
     }
-    }
-
-    $grupoMusicos=[];
-    for ($i=0; $i<5; $i++){
-      $elInstrumento=["Violin", "Piano", "Guitarra", "Bombo", "Chelo", "Clarinete", "Oboe","Arpa"];
-      $instrumento=$elInstrumento[rand(0, 7)];
-        $nuevoMusico=new Musico($nombre, $edad,  $genero, $instrumento);
-        $grupoMusicos[]=$nuevoMusico;
-}
-    $losmusicos="";
-    foreach($grupoMusicos as $num=>$elmusico){
-        $losmusicos.="Musico nº:".($num+1).$elmusico;
-    }
-    return $losmusicos;
-}
 
     public function dirigirOrquesta(): void {}
+}
 
 // CLASE HIJA //
 class Director extends Artista implements iConcierto
 {
-    private $experiencia;
+    private string $experiencia;
+    public Orquesta $orquesta;
 
     public function __construct(string $nombre, int $edad, bool $genero, string $experiencia)
     {
         parent::__construct($nombre, $edad, $genero);
         $this->experiencia = $experiencia;
+        $this->orquesta = new Orquesta("ROSS", 1992);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         $miJSON = json_decode(parent::__toString(), true);
         $miJSON['experiencia'] = $this->experiencia;
+        $miJSON['orquesta'] = $this->orquesta;
         return json_encode($miJSON, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
     public function tocar() {}
 
-    public function dirigirOrquesta()
+    public function dirigirOrquesta(): void
     {
-        return "Dirigiendo la orquesta";
+        echo "Dirigiendo la orquesta";
     }
 }
 
@@ -157,6 +133,29 @@ class Orquesta
     }
 }
 
+// Script principal
+if (isset($_REQUEST['enviar'])) {
+    $nombre = $_REQUEST['nombre'];
+    $edad = $_REQUEST['edad'];
+    $genero = $_REQUEST['genero'];
+
+    // //CREAMOS MÚSICOS Y DIRECTORES DE ORQUESTA//
+    $m1 = new Musico($nombre, $edad, $genero, "Guitarra");
+    $m2 = new Musico("Maria", 25, "Femenino", "Batería");
+    $m3 = new Musico("Carlos", 40, "Masculino", "Bajo");
+    $m4 = new Musico("Laura", 28, "Femenino", "Violín");
+    $m5 = new Musico("Pedro", 35, "Masculino", "Piano");
+
+    $d1 = new Director("Luis", 45, "Masculino", 20);
+    $d2 = new Director("Ana", 50, "Femenino", 25);
+
+    //CREAR ARRAY DE  MÚSICOS Y DIRECTORES//
+    $personas = [$m1, $m2, $m3, $m4, $m5, $d1, $d2];
+
+    // CONVERTIR A JSON //
+    $mensaje .= json_encode($personas, JSON_PRETTY_PRINT);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -175,21 +174,22 @@ class Orquesta
             <?php echo $mensaje; ?></pre> <!--ESTO PERTENECE AL ALERT DE ARRIBA-->
     </section>
     <section class="m-3 p-3 w-50 bg-secondary text-white">
-    <form action="#" method="post">
+        <form action="#" method="post">
             <label for="texto" class="w-50">Nombre</label>
-            <input type="text" name="texto" id="texto" class="w-50"><br>
+            <input type="text" name="nombre" id="texto" class="w-50"><br><br>
 
             <label for="entero" class="w-50">Edad</label>
-            <input type="number" name="entero" id="entero" class="w-50"><br>
+            <input type="number" name="edad" id="entero" class="w-50"><br><br>
 
-    <select name="genero">
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-    </select><br>
+            <select name="genero">
+                <option value="0">Masculino</option>
+                <option value="1">Femenino</option>
+            </select><br><br>
 
-    <input type="submit" value="Enviar">
-   
-</form>
+            <input type="submit" value="Enviar" name="enviar">
+
+        </form>
 
 </body>
+
 </html>
